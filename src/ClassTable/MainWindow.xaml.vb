@@ -162,7 +162,7 @@ Public Class MainWindow
         RaiseEvent ShowSettingWindow(Me, New EventArgs)
     End Sub
     Private Sub NotifyIconToolStripMenuItemEdit_Click(sender As Object, e As EventArgs) Handles NotifyIconToolStripMenuItemEdit.Click
-        Process.Start(Apppart + "Userdata\ClassTable\Table.xlsx")
+        Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\ATHS Studio\ClassTable\tablefile.xlsx")
     End Sub
     Private Sub NotifyIconToolStripMenuItemUp_Click(sender As Object, e As EventArgs) Handles NotifyIconToolStripMenuItemUp.Click
         RaiseEvent ShowUpdateWindow(Me, New EventArgs)
