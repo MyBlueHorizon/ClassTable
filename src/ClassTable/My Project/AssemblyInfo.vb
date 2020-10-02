@@ -12,10 +12,10 @@ Imports System.Windows
 '查看程序集特性的值
 
 <Assembly: AssemblyTitle("ClassTable")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("ClassTable")>
-<Assembly: AssemblyCopyright("Copyright ©  2020")>
+<Assembly: AssemblyDescription("ClassTable - 桌面课表")>
+<Assembly: AssemblyCompany("ATHS Studio")>
+<Assembly: AssemblyProduct("SmartClass - ClassTable")>
+<Assembly: AssemblyCopyright("© ATHS Studio 2016 - 2020")>
 <Assembly: AssemblyTrademark("")>
 <Assembly: ComVisible(false)>
 
@@ -42,7 +42,7 @@ Imports System.Windows
 
 
 '如果此项目向 COM 公开，则下列 GUID 用于 typelib 的 ID
-<Assembly: Guid("44c597b6-f99e-41c9-9d8a-0292d6adcb13")>
+<Assembly: Guid("258eca24-a7b5-471b-9fb4-7048f23a8a72")>
 
 ' 程序集的版本信息由下列四个值组成: 
 '
@@ -55,5 +55,5 @@ Imports System.Windows
 '通过使用 "*"，如下所示:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("1.6.8.0")>
+<Assembly: AssemblyFileVersion("1.6.8.0")>
