@@ -42,7 +42,7 @@ Imports System.Windows
 
 
 '如果此项目向 COM 公开，则下列 GUID 用于 typelib 的 ID
-<Assembly: Guid("1b454374-0717-4390-8fab-27621ec1105b")>
+<Assembly: Guid("44c597b6-f99e-41c9-9d8a-0292d6adcb13")>
 
 ' 程序集的版本信息由下列四个值组成: 
 '
