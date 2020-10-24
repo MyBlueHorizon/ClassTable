@@ -59,41 +59,4 @@ Public Class Network
             Return ("Error")
         End Try
     End Function
-
-    '进行下载
-    Public Function HttpDownload(ByVal url As String, ByVal path As String) As Boolean
-        Dim tempPath As String = System.Environment.GetEnvironmentVariable("TEMP") & "\ClassTable"
-        System.IO.Directory.CreateDirectory(tempPath)
-        Dim tempFile As String = tempPath & "\" & System.IO.Path.GetFileName(path) & ".temp"
-        If System.IO.File.Exists(path) Then
-            System.IO.File.Delete(path)
-        End If
-        If System.IO.File.Exists(tempFile) Then
-            System.IO.File.Delete(tempFile)
-        End If
-        If url = "False" Then
-            Return ("False")
-        Else
-            Try
-                Dim fs As FileStream = New FileStream(tempFile, FileMode.Append, FileAccess.Write, FileShare.ReadWrite)
-                Dim request As HttpWebRequest = TryCast(WebRequest.Create(url), HttpWebRequest)
-                Dim response As HttpWebResponse = TryCast(request.GetResponse(), HttpWebResponse)
-                Dim responseStream As Stream = response.GetResponseStream()
-                Dim bArr As Byte() = New Byte(1023) {}
-                Dim size As Integer = responseStream.Read(bArr, 0, CInt(bArr.Length))
-
-                While size > 0
-                    fs.Write(bArr, 0, size)
-                    size = responseStream.Read(bArr, 0, CInt(bArr.Length))
-                End While
-
-                fs.Close()
-                responseStream.Close()
-                System.IO.File.Move(tempFile, path)
-                Return (True)
-            Catch ex As Exception
-                Return (False)
-            End Try
-        End If
-    End Function
 End Class
