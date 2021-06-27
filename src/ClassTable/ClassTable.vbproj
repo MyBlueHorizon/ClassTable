@@ -213,5 +213,10 @@
   <ItemGroup>
     <SplashScreen Include="SplashScreen.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TableIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
