@@ -2,8 +2,8 @@
 Public Class UpdateWindow
     ReadOnly Core As New Core
     ReadOnly Network As New ClassTable.Network
-    ReadOnly MyWebClient As Net.WebClient = New Net.WebClient()
-    ReadOnly UpdateFilePath = System.Environment.GetEnvironmentVariable("TEMP") + "\ClassTable\ClassTableInstall.msi"
+    ReadOnly MyWebClient As New Net.WebClient()
+    ReadOnly UpdateFilePath = System.Environment.GetEnvironmentVariable("TEMP") + "\ClassTableInstall.msi"
     Public WithEvents DownloadEvents As WebClient = MyWebClient
     ReadOnly BackgroundRedValue = My.Settings.BackgroundColor_Red
     ReadOnly BackgroundBlueValue = My.Settings.BackgroundColor_Blue
@@ -22,8 +22,9 @@ Public Class UpdateWindow
         Label_Progress.Content = Str(e.ProgressPercentage) + " %"
     End Sub
     Private Sub Client_DownloadFileCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.AsyncCompletedEventArgs) Handles DownloadEvents.DownloadFileCompleted
-        Process.Start(UpdateFilePath)
-        System.Windows.Application.Current.Shutdown()
+        MsgBox(e.Error.ToString)
+        'Process.Start(UpdateFilePath)
+        Windows.Application.Current.Shutdown()
     End Sub
     Private Sub UpdateWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         Background = Core.GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
@@ -52,6 +53,7 @@ Public Class UpdateWindow
                 Button_Update.Content = "刷  新"
             End If
         Else
+            MsgBox(Network.GetDownloadUrl(ReleaseInformation))
             MyWebClient.DownloadFileAsync(New Uri(Network.GetDownloadUrl(ReleaseInformation)), UpdateFilePath)
             Button_Update.IsEnabled = False
         End If
