@@ -191,6 +191,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="tablefile.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
