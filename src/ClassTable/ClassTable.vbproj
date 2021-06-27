@@ -119,8 +119,14 @@
     </ApplicationDefinition>
     <Compile Include="Excel.vb" />
     <Compile Include="Network.vb" />
-    <Compile Include="SettingWindow.xaml.vb" />
-    <Compile Include="UpdateWindow.xaml.vb" />
+    <Compile Include="SettingWindow.xaml.vb">
+      <DependentUpon>SettingWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UpdateWindow.xaml.vb">
+      <DependentUpon>UpdateWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
