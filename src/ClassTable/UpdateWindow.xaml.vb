@@ -1,10 +1,19 @@
 ﻿Imports System.Net
 Public Class UpdateWindow
+    ReadOnly Core As New Core
     ReadOnly Network As New ClassTable.Network
     ReadOnly MyWebClient As Net.WebClient = New Net.WebClient()
     ReadOnly UpdateFilePath = System.Environment.GetEnvironmentVariable("TEMP") + "\ClassTable\ClassTableInstall.msi"
-    Dim WithEvents DownloadEvents As WebClient = MyWebClient
-    Public Shared ReadOnly LocalVersion As Version = New Version(Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString())
+    Public WithEvents DownloadEvents As WebClient = MyWebClient
+    ReadOnly BackgroundRedValue = My.Settings.BackgroundColor_Red
+    ReadOnly BackgroundBlueValue = My.Settings.BackgroundColor_Blue
+    ReadOnly BackgroundGreenValue = My.Settings.BackgroundColor_Green
+    ReadOnly BackgroundAlphaValue = My.Settings.BackgroundColor_Alpha
+    ReadOnly ForegroundRedValue = My.Settings.ForegroundColor_Red
+    ReadOnly ForegroundBlueValue = My.Settings.ForegroundColor_Blue
+    ReadOnly ForegroundGreenValue = My.Settings.ForegroundColor_Green
+    ReadOnly ForegroundAlphaValue = My.Settings.ForegroundColor_Alpha
+    Public Shared ReadOnly LocalVersion As New Version(Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString())
     Public Shared LatestVersion As Version
     Public Shared ReleaseInformation As String
     Private Sub Client_DownloadProgressChanged(ByVal sender As Object, ByVal e As DownloadProgressChangedEventArgs) Handles DownloadEvents.DownloadProgressChanged
@@ -17,6 +26,8 @@ Public Class UpdateWindow
         System.Windows.Application.Current.Shutdown()
     End Sub
     Private Sub UpdateWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        Background = Core.GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
+        TextBlock_Name.Foreground = Core.GetWindowBrush(ForegroundRedValue, ForegroundGreenValue, ForegroundBlueValue, ForegroundAlphaValue)
         Label_LocalVersion.Content = LocalVersion
         If ReleaseInformation = Nothing Then
             LatestVersion = New Version("0.0.0.0")
