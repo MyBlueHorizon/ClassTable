@@ -208,7 +208,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icon.ico" />
+    <Resource Include="Resources\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <SplashScreen Include="SplashScreen.png" />

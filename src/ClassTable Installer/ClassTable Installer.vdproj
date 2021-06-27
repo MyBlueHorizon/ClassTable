@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0102905CDEF34357A9171E35274A20B9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_02B84458FF1E4426A40E469E229D1841"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -22,19 +28,13 @@
         "Entry"
         {
         "MsmKey" = "8:_15E3E2E883CA9E63C24D12E0CE1FBF08"
-        "OwnerKey" = "8:_39CDA13E29D14BB49150B3DED5A592DF"
+        "OwnerKey" = "8:_AF77011C92D74710A2419513A58E27F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_26E60CC3BE74B8B54F5FB049C656707F"
-        "OwnerKey" = "8:_39CDA13E29D14BB49150B3DED5A592DF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_39CDA13E29D14BB49150B3DED5A592DF"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_AF77011C92D74710A2419513A58E27F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -46,19 +46,19 @@
         "Entry"
         {
         "MsmKey" = "8:_7989E23CAD8F9F10023554C7A6F957B4"
-        "OwnerKey" = "8:_39CDA13E29D14BB49150B3DED5A592DF"
+        "OwnerKey" = "8:_AF77011C92D74710A2419513A58E27F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_7DC298FADF8BEC4EC535F1ED77459055"
-        "OwnerKey" = "8:_39CDA13E29D14BB49150B3DED5A592DF"
+        "OwnerKey" = "8:_AF77011C92D74710A2419513A58E27F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_8B903D9E1BC608E598A13538D6E32C29"
-        "OwnerKey" = "8:_39CDA13E29D14BB49150B3DED5A592DF"
+        "OwnerKey" = "8:_AF77011C92D74710A2419513A58E27F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -70,31 +70,31 @@
         "Entry"
         {
         "MsmKey" = "8:_8E84ED407368E710D7BA18FFA61929EB"
-        "OwnerKey" = "8:_39CDA13E29D14BB49150B3DED5A592DF"
+        "OwnerKey" = "8:_AF77011C92D74710A2419513A58E27F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E078FE513E1E5D8395481CC006CB5C2C"
-        "OwnerKey" = "8:_39CDA13E29D14BB49150B3DED5A592DF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F1D01FB7F33F2339D9BA4E87D34F3CE6"
-        "OwnerKey" = "8:_39CDA13E29D14BB49150B3DED5A592DF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F23240EAF9184AF1BEB54C5B42412CE1"
+        "MsmKey" = "8:_AF77011C92D74710A2419513A58E27F4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_E078FE513E1E5D8395481CC006CB5C2C"
+        "OwnerKey" = "8:_AF77011C92D74710A2419513A58E27F4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F1D01FB7F33F2339D9BA4E87D34F3CE6"
+        "OwnerKey" = "8:_AF77011C92D74710A2419513A58E27F4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_39CDA13E29D14BB49150B3DED5A592DF"
+        "OwnerKey" = "8:_AF77011C92D74710A2419513A58E27F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -240,6 +240,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0102905CDEF34357A9171E35274A20B9"
+            {
+            "SourcePath" = "8:..\\ClassTable\\tablefile.xlsx"
+            "TargetName" = "8:tablefile.xlsx"
+            "Tag" = "8:"
+            "Folder" = "8:_B7C26A0CA6A342DEAA3CA2EF3670DDCC"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:TRUE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_02B84458FF1E4426A40E469E229D1841"
             {
             "SourcePath" = "8:..\\ClassTable\\Resources\\TableIcon.ico"
@@ -508,26 +528,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F23240EAF9184AF1BEB54C5B42412CE1"
-            {
-            "SourcePath" = "8:C:\\Users\\TX Zhang\\source\\repos\\ClassTable\\ClassTable\\bin\\Debug\\Userdata\\ClassTable\\tablefile.xlsx"
-            "TargetName" = "8:tablefile.xlsx"
-            "Tag" = "8:"
-            "Folder" = "8:_B7C26A0CA6A342DEAA3CA2EF3670DDCC"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:TRUE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
         }
         "FileType"
         {
@@ -628,15 +628,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ClassTable"
-        "ProductCode" = "8:{C1BD5350-61D0-4CA7-90FD-18BF3217A11D}"
-        "PackageCode" = "8:{6F286360-8ECB-484F-BCA7-2B1CCBC7996E}"
+        "ProductCode" = "8:{2EC2BB78-84B4-4ABE-93DC-F6C65885339A}"
+        "PackageCode" = "8:{FE244713-1A54-4B0F-B1DF-8E7492BCC4FE}"
         "UpgradeCode" = "8:{F3F2D9FF-E3BA-4640-9AEA-FA305BEA589D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.6.10"
+        "ProductVersion" = "8:1.6.11"
         "Manufacturer" = "8:ATHS Studio"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://MyBlueHorizon.github.io/ClassTable"
@@ -646,8 +646,8 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:ClassTable 安装程序"
         "ARPURLINFOABOUT" = "8:https://MyBlueHorizon.github.io"
-        "ARPPRODUCTICON" = "8:"
-        "ARPIconIndex" = "3:0"
+        "ARPPRODUCTICON" = "8:_AF77011C92D74710A2419513A58E27F4"
+        "ARPIconIndex" = "3:32512"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:0"
@@ -713,35 +713,49 @@
                             "Transitive" = "11:FALSE"
                                 "Keys"
                                 {
-                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_463C140E187C471983F99C5B34C675FA"
+                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_FEBDD1A44FAD4D1A8D72533D7B79B867"
                                     {
-                                    "Name" = "8:CurrentVersion"
+                                    "Name" = "8:Windows"
                                     "Condition" = "8:"
                                     "AlwaysCreate" = "11:FALSE"
                                     "DeleteAtUninstall" = "11:FALSE"
                                     "Transitive" = "11:FALSE"
                                         "Keys"
                                         {
-                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_C587D80A19164AD8A7237443D40953FD"
+                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_F36D8ADC735F4561A84169D9CC2D0633"
                                             {
-                                            "Name" = "8:Run"
+                                            "Name" = "8:CurrentVersion"
                                             "Condition" = "8:"
                                             "AlwaysCreate" = "11:FALSE"
                                             "DeleteAtUninstall" = "11:FALSE"
                                             "Transitive" = "11:FALSE"
                                                 "Keys"
                                                 {
+                                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_C587D80A19164AD8A7237443D40953FD"
+                                                    {
+                                                    "Name" = "8:Run"
+                                                    "Condition" = "8:"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "DeleteAtUninstall" = "11:FALSE"
+                                                    "Transitive" = "11:FALSE"
+                                                        "Keys"
+                                                        {
+                                                        }
+                                                        "Values"
+                                                        {
+                                                            "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_37A975E98CFD4359B59CEA86FAA2FA98"
+                                                            {
+                                                            "Name" = "8:ClassTable"
+                                                            "Condition" = "8:"
+                                                            "Transitive" = "11:FALSE"
+                                                            "ValueTypes" = "3:1"
+                                                            "Value" = "8:\"[TARGETDIR]ClassTable.exe\""
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                                 "Values"
                                                 {
-                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_37A975E98CFD4359B59CEA86FAA2FA98"
-                                                    {
-                                                    "Name" = "8:ClassTable"
-                                                    "Condition" = "8:"
-                                                    "Transitive" = "11:FALSE"
-                                                    "ValueTypes" = "3:1"
-                                                    "Value" = "8:\"[TARGETDIR]ClassTable.exe\""
-                                                    }
                                                 }
                                             }
                                         }
@@ -799,7 +813,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1B77056C1ECD4210B7784239B5BEB503"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2D6E46D741DB4082B88A04789009EFD6"
             {
             "Name" = "8:ClassTable 桌面课表"
             "Arguments" = "8:"
@@ -807,27 +821,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:32512"
             "Transitive" = "11:FALSE"
-            "Target" = "8:"
+            "Target" = "8:_AF77011C92D74710A2419513A58E27F4"
             "Folder" = "8:_E75CF08062ED47098855CF781A4E9319"
             "WorkingFolder" = "8:_F796734E1F3A46538ED6F6E676F77505"
-            "Icon" = "8:"
+            "Icon" = "8:_AF77011C92D74710A2419513A58E27F4"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_77192A1DADC84A79BB91298A9C6F4B5B"
-            {
-            "Name" = "8:ClassTable 桌面课表"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:32512"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:"
-            "Folder" = "8:_7EA4E47CED0D4CDC8DDF3E05FD804809"
-            "WorkingFolder" = "8:_F796734E1F3A46538ED6F6E676F77505"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FD1662FAE73648DFB6EDD8B8F3EC26A2"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E767955C901C4E8483ACCFC07AAD9267"
             {
             "Name" = "8:课表文件"
             "Arguments" = "8:"
@@ -835,10 +835,24 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_F23240EAF9184AF1BEB54C5B42412CE1"
+            "Target" = "8:_0102905CDEF34357A9171E35274A20B9"
             "Folder" = "8:_7EA4E47CED0D4CDC8DDF3E05FD804809"
             "WorkingFolder" = "8:_B7C26A0CA6A342DEAA3CA2EF3670DDCC"
             "Icon" = "8:_02B84458FF1E4426A40E469E229D1841"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F89335FF02464EF3A2E78304F9A2C61D"
+            {
+            "Name" = "8:ClassTable 桌面课表"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:32512"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_AF77011C92D74710A2419513A58E27F4"
+            "Folder" = "8:_7EA4E47CED0D4CDC8DDF3E05FD804809"
+            "WorkingFolder" = "8:_F796734E1F3A46538ED6F6E676F77505"
+            "Icon" = "8:_AF77011C92D74710A2419513A58E27F4"
             "Feature" = "8:"
             }
         }
@@ -1240,7 +1254,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_39CDA13E29D14BB49150B3DED5A592DF"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_AF77011C92D74710A2419513A58E27F4"
             {
             "SourcePath" = "8:..\\ClassTable\\obj\\Release\\ClassTable.exe"
             "TargetName" = "8:"

@@ -15,7 +15,7 @@ Imports System.Windows
 <Assembly: AssemblyDescription("ClassTable - 桌面课表")>
 <Assembly: AssemblyCompany("ATHS Studio")>
 <Assembly: AssemblyProduct("SmartClass - ClassTable")>
-<Assembly: AssemblyCopyright("© ATHS Studio 2016 - 2020")>
+<Assembly: AssemblyCopyright("© ATHS Studio 2016 - 2021")>
 <Assembly: AssemblyTrademark("")>
 <Assembly: ComVisible(false)>
 
@@ -55,5 +55,5 @@ Imports System.Windows
 '通过使用 "*"，如下所示:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.6.10.0")>
-<Assembly: AssemblyFileVersion("1.6.10.0")>
+<Assembly: AssemblyVersion("1.6.11.0")>
+<Assembly: AssemblyFileVersion("1.6.11.0")>
