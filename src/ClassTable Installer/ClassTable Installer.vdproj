@@ -628,15 +628,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ClassTable"
-        "ProductCode" = "8:{2EC2BB78-84B4-4ABE-93DC-F6C65885339A}"
-        "PackageCode" = "8:{FE244713-1A54-4B0F-B1DF-8E7492BCC4FE}"
+        "ProductCode" = "8:{2341680B-D037-4CED-A498-EDA279B108E4}"
+        "PackageCode" = "8:{FCD4E9DA-7909-4281-831E-A3025DA5D380}"
         "UpgradeCode" = "8:{F3F2D9FF-E3BA-4640-9AEA-FA305BEA589D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.6.11"
+        "ProductVersion" = "8:1.6.12"
         "Manufacturer" = "8:ATHS Studio"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://MyBlueHorizon.github.io/ClassTable"
@@ -1256,7 +1256,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_AF77011C92D74710A2419513A58E27F4"
             {
-            "SourcePath" = "8:..\\ClassTable\\obj\\Release\\ClassTable.exe"
+            "SourcePath" = "8:..\\ClassTable\\obj\\Debug\\ClassTable.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_F796734E1F3A46538ED6F6E676F77505"
