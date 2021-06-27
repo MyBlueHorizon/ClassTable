@@ -22,8 +22,7 @@ Public Class UpdateWindow
         Label_Progress.Content = Str(e.ProgressPercentage) + " %"
     End Sub
     Private Sub Client_DownloadFileCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.AsyncCompletedEventArgs) Handles DownloadEvents.DownloadFileCompleted
-        MsgBox(e.Error.ToString)
-        'Process.Start(UpdateFilePath)
+        Process.Start(UpdateFilePath)
         Windows.Application.Current.Shutdown()
     End Sub
     Private Sub UpdateWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
@@ -53,7 +52,6 @@ Public Class UpdateWindow
                 Button_Update.Content = "刷  新"
             End If
         Else
-            MsgBox(Network.GetDownloadUrl(ReleaseInformation))
             MyWebClient.DownloadFileAsync(New Uri(Network.GetDownloadUrl(ReleaseInformation)), UpdateFilePath)
             Button_Update.IsEnabled = False
         End If
