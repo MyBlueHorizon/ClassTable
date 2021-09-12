@@ -1,7 +1,7 @@
 ﻿Imports System.Net
-Public Class UpdateWindow
-    ReadOnly Core As New Core
-    ReadOnly Network As New ClassTable.Network
+Public Class LegacyUpdateWindow
+    ReadOnly Core As New LegacyCore
+    ReadOnly Network As New ClassTable.LegacyNetwork
     ReadOnly MyWebClient As New Net.WebClient()
     ReadOnly UpdateFilePath = System.Environment.GetEnvironmentVariable("TEMP") + "\ClassTableInstall.msi"
     Public WithEvents DownloadEvents As WebClient = MyWebClient

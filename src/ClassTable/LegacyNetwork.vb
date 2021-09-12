@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Net
 Imports Newtonsoft.Json
-Public Class Network
+Public Class LegacyNetwork
 
     '网络与更新部分
 

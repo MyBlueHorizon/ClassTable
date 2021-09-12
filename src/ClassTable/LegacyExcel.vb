@@ -1,7 +1,7 @@
 ﻿Imports Newtonsoft.Json
 Imports ClosedXML.Excel
 Imports System.IO
-Public Class Excel
+Public Class LegacyExcel
 
     '读取表格部分
 

@@ -1,4 +1,4 @@
-﻿Public Class Core
+﻿Public Class LegacyCore
 
     '字符串转换
 
