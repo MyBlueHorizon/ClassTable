@@ -59,4 +59,7 @@ Public Class LegacyUpdateWindow
     Private Sub Button_Back_Click(sender As Object, e As RoutedEventArgs) Handles Button_Back.Click
         Hide()
     End Sub
+    Private Sub LegacyUpdatWindow_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles Me.MouseLeftButtonDown
+        DragMove()
+    End Sub
 End Class

@@ -41,12 +41,18 @@ Public Class LegacySidebarWindow
         '载入课表
         RaiseEvent LoadTable(Me, New EventArgs)
         RaiseEvent ReadConfigInformation(Me, New EventArgs)
-        LegacyUpdateWindow.ReleaseInformation = Network.GetReleaseInformation
-        LegacyUpdateWindow.LatestVersion = New Version(Network.GetLatestVersion(LegacyUpdateWindow.ReleaseInformation))
-        If LegacyUpdateWindow.LatestVersion > LegacyUpdateWindow.LocalVersion Then
-            RaiseEvent ShowUpdateWindow(Me, New EventArgs)
-        End If
+        GC.Collect()
+        CheckUpdate()
     End Sub
+    Private Async Function CheckUpdate() As Task
+        Await Task.Run(action:=Sub()
+                                   LegacyUpdateWindow.ReleaseInformation = Network.GetReleaseInformation()
+                                   LegacyUpdateWindow.LatestVersion = New Version(Network.GetLatestVersion(LegacyUpdateWindow.ReleaseInformation))
+                                   If LegacyUpdateWindow.LatestVersion > LegacyUpdateWindow.LocalVersion Then
+                                       RaiseEvent ShowUpdateWindow(Me, New EventArgs)
+                                   End If
+                               End Sub)
+    End Function
     Private Sub MainWindow_LoadTable(sender As Object, e As EventArgs) Handles Me.LoadTable
         '设置日期
         If My.Settings.Mdate = "No" Then

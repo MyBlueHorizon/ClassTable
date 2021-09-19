@@ -21,7 +21,7 @@ Public Class LegacyNetwork
             myResponseStream.Close()
             Return retString
         Catch Ex As Exception
-            Return ("Error")
+            Return "Error"
         End Try
     End Function
 
@@ -30,9 +30,9 @@ Public Class LegacyNetwork
         Dim JsonString
         Try
             JsonString = GetHttpResponse("https://api.github.com/repos/mybluehorizon/classtable/releases/latest", 10000)
-            Return (JsonString)
+            Return JsonString
         Catch Ex As Exception
-            Return ("Error")
+            Return "Error"
         End Try
     End Function
 
@@ -56,7 +56,7 @@ Public Class LegacyNetwork
             Dim sIndex As String = DownloadUrl("assets")(0)("browser_download_url")
             Return sIndex
         Catch Ex As Exception
-            Return ("Error")
+            Return "Error"
         End Try
     End Function
 End Class

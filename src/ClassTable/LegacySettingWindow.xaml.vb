@@ -100,4 +100,7 @@ Public Class LegacySettingWindow
         Hide()
         e.Cancel = True
     End Sub
+    Private Sub LegacySettingWindow_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles Me.MouseLeftButtonDown
+        DragMove()
+    End Sub
 End Class

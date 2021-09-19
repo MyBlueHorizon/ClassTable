@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" Background="#7A006060"
         ResizeMode="NoResize"
-        Height="180" Width="320" WindowStyle="None" AllowsTransparency="True" Topmost="True" >
+        Height="180" Width="320" WindowStyle="None" AllowsTransparency="True" Topmost="True" Title="ClassTable - 程序设置" Icon="Resource/Icons/AppIcon.ico" >
     <Grid>
         <Button x:Name="Button_Back" Content="返  回" HorizontalAlignment="Left" Width="96" FontFamily="STZhongsong" FontSize="28" Height="48" VerticalAlignment="Top" Background="#3DFFFFFF" BorderBrush="{x:Null}" Foreground="{Binding Foreground, ElementName=TextBlock_Weekday}"  FontWeight="Bold" Margin="10,122,0,0"/>
         <Button x:Name="Button_Save" Content="存储 / 应用" HorizontalAlignment="Left" Width="192" FontFamily="STZhongsong" FontSize="28" Height="48" VerticalAlignment="Top" Background="#3DFFFFFF" BorderBrush="{x:Null}" Foreground="{Binding Foreground, ElementName=TextBlock_Weekday}"  FontWeight="Bold" Margin="118,122,0,0"/>

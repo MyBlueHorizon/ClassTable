@@ -9,10 +9,10 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         Height="720"
-        Width="96"  
-        ShowInTaskbar="False"
+        Width="96"
         Background="#7A006060"
-        WindowStartupLocation="CenterScreen" Topmost="True">
+        WindowStartupLocation="CenterScreen"
+        Topmost="True" Title="ClassTable - 侧边栏" Icon="Resource/Icons/AppIcon.ico" ShowInTaskbar="False">
     <Grid>
         <TextBlock x:Name="MorRead" HorizontalAlignment="Left" TextWrapping="Wrap" Text="语 文" VerticalAlignment="Top" Height="48" Width="96" FontWeight="Bold" FontFamily="STZhongsong" FontSize="38" Margin="0,49,0,0" TextAlignment="Center" Foreground="{Binding Foreground, ElementName=MorWeekday}"/>
         <TextBlock x:Name="MorA" HorizontalAlignment="Left" TextWrapping="Wrap" Text="数 学" VerticalAlignment="Top" Height="48" Width="96" FontWeight="Bold" FontFamily="STZhongsong" FontSize="38" Margin="0,102,0,0" TextAlignment="Center" Foreground="{Binding Foreground, ElementName=MorWeekday}"/>

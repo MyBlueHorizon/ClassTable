@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" Background="#7A006060"
         ResizeMode="NoResize"
-        Title="软件更新" Height="180" Width="320" AllowsTransparency="True"
-        WindowStyle="None" Topmost="True">
+        Title="ClassTable - 程序更新" Height="180" Width="320" AllowsTransparency="True"
+        WindowStyle="None" Topmost="True" Icon="Resource/Icons/AppIcon.ico">
     <Grid>
         <Label Content="最新版本：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,39,0,0" FontSize="18" FontFamily="STZhongsong" Foreground="{Binding Foreground, ElementName=TextBlock_Name}"/>
         <Label x:Name="Label_LatestVersion" Content="尚未检查更新/获取版本失败" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,43,0,0" FontSize="14" FontFamily="STZhongsong" Foreground="{Binding Foreground, ElementName=TextBlock_Name}"/>
