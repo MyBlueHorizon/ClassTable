@@ -21,5 +21,6 @@
         <Label Content="更新进度" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="205,65,0,0" Height="24" FontFamily="STZhongsong" Foreground="{Binding Foreground, ElementName=TextBlock_Name}"/>
         <Label x:Name="Label_Progress" Content="0 %" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="263,65,0,0" Height="24" FontFamily="STZhongsong" Foreground="{Binding Foreground, ElementName=TextBlock_Name}"/>
         <Label x:Name="Label_DownloadBit" Content="0 字节 / 0 字节" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,65,0,0" Height="24" FontFamily="STZhongsong" Foreground="{Binding Foreground, ElementName=TextBlock_Name}"/>
+        <Label x:Name="Label_Warning" Content="更新源部分地区访问不畅，失败请重试" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="87,10,0,0" FontSize="12" FontFamily="STZhongsong" Foreground="{Binding Foreground, ElementName=TextBlock_Name}" Height="24" Width="223"/>
     </Grid>
 </Window>
