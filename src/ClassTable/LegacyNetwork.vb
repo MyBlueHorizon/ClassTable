@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Net
 Imports Newtonsoft.Json
-Public Class Network
+Public Class LegacyNetwork
 
     '网络与更新部分
 
@@ -15,13 +15,13 @@ Public Class Network
             request.Timeout = Timeout
             Dim response As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
             Dim myResponseStream As Stream = response.GetResponseStream()
-            Dim myStreamReader As StreamReader = New StreamReader(myResponseStream, Text.Encoding.GetEncoding("utf-8"))
+            Dim myStreamReader As New StreamReader(myResponseStream, Text.Encoding.GetEncoding("utf-8"))
             Dim retString As String = myStreamReader.ReadToEnd()
             myStreamReader.Close()
             myResponseStream.Close()
             Return retString
         Catch Ex As Exception
-            Return ("Error")
+            Return "Error"
         End Try
     End Function
 
@@ -30,9 +30,9 @@ Public Class Network
         Dim JsonString
         Try
             JsonString = GetHttpResponse("https://api.github.com/repos/mybluehorizon/classtable/releases/latest", 10000)
-            Return (JsonString)
+            Return JsonString
         Catch Ex As Exception
-            Return ("Error")
+            Return "Error"
         End Try
     End Function
 
@@ -42,7 +42,11 @@ Public Class Network
         Try
             LatestVersion = JsonConvert.DeserializeObject(ReleaseInformation)
             Dim sIndex As String = LatestVersion("tag_name")
-            Return sIndex
+            If sIndex.StartsWith("v") Then
+                Return sIndex.Remove(0, 1)
+            Else
+                Return sIndex
+            End If
         Catch Ex As Exception
             Return "0.0.0"
         End Try
@@ -56,7 +60,7 @@ Public Class Network
             Dim sIndex As String = DownloadUrl("assets")(0)("browser_download_url")
             Return sIndex
         Catch Ex As Exception
-            Return ("Error")
+            Return "Error"
         End Try
     End Function
 End Class

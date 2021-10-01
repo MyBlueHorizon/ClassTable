@@ -1,8 +1,8 @@
 ﻿Imports System
-Imports System.Reflection
-Imports System.Runtime.InteropServices
 Imports System.Globalization
+Imports System.Reflection
 Imports System.Resources
+Imports System.Runtime.InteropServices
 Imports System.Windows
 
 ' 有关程序集的一般信息由以下
@@ -11,8 +11,8 @@ Imports System.Windows
 
 '查看程序集特性的值
 
-<Assembly: AssemblyTitle("ClassTable")>
-<Assembly: AssemblyDescription("ClassTable - 桌面课表")>
+<Assembly: AssemblyTitle("ClassTable - 桌面课表")>
+<Assembly: AssemblyDescription("在桌面上显示当天课程。")>
 <Assembly: AssemblyCompany("ATHS Studio")>
 <Assembly: AssemblyProduct("SmartClass - ClassTable")>
 <Assembly: AssemblyCopyright("© ATHS Studio 2016 - 2021")>
@@ -55,5 +55,5 @@ Imports System.Windows
 '通过使用 "*"，如下所示:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.6.12.0")>
-<Assembly: AssemblyFileVersion("1.6.12.0")>
+<Assembly: AssemblyVersion("1.7.2.0")>
+<Assembly: AssemblyFileVersion("1.7.2.0")>

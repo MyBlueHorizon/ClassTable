@@ -1,4 +1,4 @@
-﻿Public Class Core
+﻿Public Class LegacyCore
 
     '字符串转换
 
@@ -47,7 +47,7 @@
     '程序UI
 
     '获取窗口笔刷
-    Public Function GetWindowBrush(ByVal R As String, ByVal G As String, ByVal B As String, ByVal A As String)
+    Public Shared Function GetWindowBrush(ByVal R As String, ByVal G As String, ByVal B As String, ByVal A As String)
         Dim WindowBrush As Brush = New SolidColorBrush(Color.FromArgb(A, R, G, B))
         Return WindowBrush
     End Function

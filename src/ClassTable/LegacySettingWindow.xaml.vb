@@ -1,7 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Windows.Media
-Public Class SettingWindow
-    ReadOnly Core As New Core
+Public Class LegacySettingWindow
+    ReadOnly Core As New LegacyCore
     Dim BackgroundRedValue = My.Settings.BackgroundColor_Red
     Dim BackgroundBlueValue = My.Settings.BackgroundColor_Blue
     Dim BackgroundGreenValue = My.Settings.BackgroundColor_Green
@@ -10,7 +10,7 @@ Public Class SettingWindow
     Dim ForegroundBlueValue = My.Settings.ForegroundColor_Blue
     Dim ForegroundGreenValue = My.Settings.ForegroundColor_Green
     Dim ForegroundAlphaValue = My.Settings.ForegroundColor_Alpha
-    Dim SetDate = MainWindow.NowWeekday
+    Dim SetDate = LegacySidebarWindow.NowWeekday
     Private Sub Slider_AlphaBar_ValueChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Double)) Handles Slider_AlphaBar.ValueChanged
         If Radio_Back.IsChecked = True Then
             BackgroundAlphaValue = Slider_AlphaBar.Value
@@ -99,5 +99,8 @@ Public Class SettingWindow
     Private Sub SettingWindow_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         Hide()
         e.Cancel = True
+    End Sub
+    Private Sub LegacySettingWindow_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles Me.MouseLeftButtonDown
+        DragMove()
     End Sub
 End Class
