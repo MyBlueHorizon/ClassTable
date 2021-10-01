@@ -32,6 +32,12 @@ Public Class LegacySidebarWindow
     Private Sub MainWindow_ShowUpdateWindow(sender As Object, e As EventArgs) Handles Me.ShowUpdateWindow
         MyUpdateWindow.ShowDialog()
     End Sub
+    '显示设置窗口
+    Private Event ShowAboutWindow(ByVal sender As Object, ByVal e As EventArgs)
+    ReadOnly MyAboutWindow As New LegacyAboutWindow
+    Private Sub LegacySidebarWindow_ShowAboutWindow(sender As Object, e As EventArgs) Handles Me.ShowAboutWindow
+        MyAboutWindow.ShowDialog()
+    End Sub
     ReadOnly ScreenDPI = Graphics.FromHwnd(IntPtr.Zero)
     ReadOnly Apppart = AppDomain.CurrentDomain.BaseDirectory
     Public Shared NowWeekday = Weekday(DateValue(DateString))
@@ -128,7 +134,6 @@ Public Class LegacySidebarWindow
     Dim WithEvents NotifyIconToolStripMenuItemUp As ToolStripMenuItem = New ToolStripMenuItem
     Dim WithEvents NotifyIconToolStripMenuItemAbout As ToolStripMenuItem = New ToolStripMenuItem
     Dim WithEvents NotifyIconToolStripMenuItemSetting As ToolStripMenuItem = New ToolStripMenuItem
-    Dim WithEvents NotifyIconToolStripMenuItemHide As ToolStripMenuItem = New ToolStripMenuItem
     Dim WithEvents NotifyIconToolStripMenuItemTop As ToolStripMenuItem = New ToolStripMenuItem
     Dim WithEvents NotifyIconToolStripMenuItemExit As ToolStripMenuItem = New ToolStripMenuItem
     Private Sub MainWindow_InitializeNotifyIcon(sender As Object, e As EventArgs) Handles Me.InitializeNotifyIcon
@@ -136,7 +141,7 @@ Public Class LegacySidebarWindow
         '初始化通知图标
         MyNotifyIcon.Icon = My.Resources.AppIcon
         MyNotifyIcon.Visible = True
-        MyNotifyIcon.Text = "ClassTable"
+        MyNotifyIcon.Text = "ClassTable - 桌面课表"
         MyNotifyIcon.ContextMenuStrip = NotifyIconContextMenuStrip
 
         '初始化右键菜单
@@ -154,15 +159,10 @@ Public Class LegacySidebarWindow
 
         NotifyIconToolStripMenuItemTop.Text = "置顶"
         NotifyIconContextMenuStrip.Items.Add(NotifyIconToolStripMenuItemTop)
-        'NotifyIconToolStripMenuItemHide.Text = "隐藏"
-        'NotifyIconContextMenuStrip.Items.Add(NotifyIconToolStripMenuItemHide)
+        NotifyIconToolStripMenuItemTop.Checked = Topmost <> False
         NotifyIconToolStripMenuItemExit.Text = "关闭"
         NotifyIconContextMenuStrip.Items.Add(NotifyIconToolStripMenuItemExit)
 
-    End Sub
-    Private Sub NotifyIconContextMenuStrip_Click(sender As Object, e As EventArgs) Handles NotifyIconContextMenuStrip.Click
-        Show()
-        NotifyIconToolStripMenuItemHide.Checked = True
     End Sub
     Private Sub NotifyIconToolStripMenuItemSetting_Click(sender As Object, e As EventArgs) Handles NotifyIconToolStripMenuItemSetting.Click
         RaiseEvent ShowSettingWindow(Me, New EventArgs)
@@ -174,7 +174,7 @@ Public Class LegacySidebarWindow
         RaiseEvent ShowUpdateWindow(Me, New EventArgs)
     End Sub
     Private Sub NotifyIconToolStripMenuItemAbout_Click(sender As Object, e As EventArgs) Handles NotifyIconToolStripMenuItemAbout.Click
-        MsgBox("本产品使用的第三方库:" & vbCrLf & "Newtonsoft.Json" & vbCrLf & "ClosedXML" & vbCrLf & "访问 mybluehorizon.github.io/classtable 获得支持" & vbCrLf & "© ATHS Studio 2016 - 2020", Title:="ClassTable 桌面课表", Buttons:=MsgBoxStyle.Information)
+        RaiseEvent ShowAboutWindow(Me, New EventArgs)
     End Sub
     Private Sub NotifyIconToolStripMenuItemTop_Click(sender As Object, e As EventArgs) Handles NotifyIconToolStripMenuItemTop.Click
         If NotifyIconToolStripMenuItemTop.Checked = True Then
@@ -185,16 +185,7 @@ Public Class LegacySidebarWindow
             NotifyIconToolStripMenuItemTop.Checked = True
         End If
     End Sub
-    'Private Sub NotifyIconToolStripMenuItemHide_Click(sender As Object, e As EventArgs) Handles NotifyIconToolStripMenuItemHide.Click
-    '    If NotifyIconToolStripMenuItemHide.Checked = True Then
-    '        NotifyIconToolStripMenuItemHide.Checked = False
-    '        Show()
-    '    Else
-    '        Hide()
-    '        NotifyIconToolStripMenuItemHide.Checked = True
-    '    End If
-    'End Sub
     Private Sub NotifyIconToolStripMenuItemExit_Click(sender As Object, e As EventArgs) Handles NotifyIconToolStripMenuItemExit.Click
-        System.Windows.Application.Current.Shutdown()
+        Windows.Application.Current.Shutdown()
     End Sub
 End Class

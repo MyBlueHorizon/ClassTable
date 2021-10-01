@@ -184,6 +184,15 @@ Partial Friend NotInheritable Class MySettings
             Me("Ndate") = value
         End Set
     End Property
+    
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Victory")>  _
+    Public ReadOnly Property AppVersionName() As String
+        Get
+            Return CType(Me("AppVersionName"),String)
+        End Get
+    End Property
 End Class
 
 Namespace My

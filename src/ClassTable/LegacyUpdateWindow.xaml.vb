@@ -1,4 +1,5 @@
-﻿Imports System.Net
+﻿Imports System.ComponentModel
+Imports System.Net
 Public Class LegacyUpdateWindow
     ReadOnly Core As New LegacyCore
     ReadOnly Network As New ClassTable.LegacyNetwork
@@ -61,5 +62,9 @@ Public Class LegacyUpdateWindow
     End Sub
     Private Sub LegacyUpdatWindow_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles Me.MouseLeftButtonDown
         DragMove()
+    End Sub
+    Private Sub LegacyUpdateWindow_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        Hide()
+        e.Cancel = True
     End Sub
 End Class

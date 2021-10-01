@@ -15,7 +15,7 @@ Public Class LegacyNetwork
             request.Timeout = Timeout
             Dim response As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
             Dim myResponseStream As Stream = response.GetResponseStream()
-            Dim myStreamReader As StreamReader = New StreamReader(myResponseStream, Text.Encoding.GetEncoding("utf-8"))
+            Dim myStreamReader As New StreamReader(myResponseStream, Text.Encoding.GetEncoding("utf-8"))
             Dim retString As String = myStreamReader.ReadToEnd()
             myStreamReader.Close()
             myResponseStream.Close()
@@ -42,7 +42,11 @@ Public Class LegacyNetwork
         Try
             LatestVersion = JsonConvert.DeserializeObject(ReleaseInformation)
             Dim sIndex As String = LatestVersion("tag_name")
-            Return sIndex
+            If sIndex.StartsWith("v") Then
+                Return sIndex.Remove(0, 1)
+            Else
+                Return sIndex
+            End If
         Catch Ex As Exception
             Return "0.0.0"
         End Try
