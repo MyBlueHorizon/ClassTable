@@ -1,5 +1,5 @@
 # ClassTable
-![](https://img.shields.io/badge/设计于-Windows_10-blue.svg?style=for-the-badge)
+![](https://img.shields.io/badge/设计为-Windows_10-blue.svg?style=for-the-badge)
 ![](https://img.shields.io/badge/兼容于-Windows_7-birghtgreen.svg?style=for-the-badge)
 
 ---
