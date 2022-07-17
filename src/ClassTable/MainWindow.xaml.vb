@@ -49,13 +49,13 @@ Public Class LegacySidebarWindow
         CheckUpdate()
     End Sub
     Private Async Function CheckUpdate() As Task
-       Await Task.Run(action:=Sub()
-                             LegacyUpdateWindow.ReleaseInformation = NetworkManager.GetReleaseInformation()
-                             LegacyUpdateWindow.LatestVersion = New Version(NetworkManager.GetLatestVersion(LegacyUpdateWindow.ReleaseInformation))
-                             If LegacyUpdateWindow.LatestVersion > LegacyUpdateWindow.LocalVersion Then
-                                 RaiseEvent ShowUpdateWindow(Me, New EventArgs)
-                             End If
-                         End Sub)
+        Await Task.Run(action:=Sub()
+                                   LegacyUpdateWindow.ReleaseInformation = NetworkManager.GetReleaseInformation()
+                                   LegacyUpdateWindow.LatestVersion = New Version(NetworkManager.GetLatestVersion(LegacyUpdateWindow.ReleaseInformation))
+                                   If LegacyUpdateWindow.LatestVersion > LegacyUpdateWindow.LocalVersion Then
+                                       RaiseEvent ShowUpdateWindow(Me, New EventArgs)
+                                   End If
+                               End Sub)
     End Function
     Private Sub MainWindow_LoadTable(sender As Object, e As EventArgs) Handles Me.LoadTable
         '设置日期
