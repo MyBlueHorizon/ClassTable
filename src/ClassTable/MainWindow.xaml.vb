@@ -1,9 +1,7 @@
 ﻿Imports System.Drawing
 Imports System.Windows.Forms
+Imports ClassTable.AppCore
 Public Class LegacySidebarWindow
-    ReadOnly Core As New ClassTable.AppCore
-    ReadOnly Excel As New ClassTable.ExcelManager
-    ReadOnly Network As New ClassTable.NetworkManager
     '读取配置文件
     Private Event ReadConfigInformation(ByVal sender As Object, ByVal e As EventArgs)
     Private Sub MainWindow_ReadConfigInformation(sender As Object, e As EventArgs) Handles Me.ReadConfigInformation
@@ -17,8 +15,8 @@ Public Class LegacySidebarWindow
                 Left = Screen.PrimaryScreen.WorkingArea.Width / (ScreenDPI.dpix / 96) - 48
         End Select
         '设置颜色
-        Background = Core.GetWindowBrush(My.Settings.BackgroundColor_Red, My.Settings.BackgroundColor_Green, My.Settings.BackgroundColor_Blue, My.Settings.BackgroundColor_Alpha)
-        MorWeekday.Foreground = Core.GetWindowBrush(My.Settings.ForegroundColor_Red, My.Settings.ForegroundColor_Green, My.Settings.ForegroundColor_Blue, My.Settings.ForegroundColor_Alpha)
+        Background = AppCore.GetWindowBrush(My.Settings.BackgroundColor_Red, My.Settings.BackgroundColor_Green, My.Settings.BackgroundColor_Blue, My.Settings.BackgroundColor_Alpha)
+        MorWeekday.Foreground = GetWindowBrush(My.Settings.ForegroundColor_Red, My.Settings.ForegroundColor_Green, My.Settings.ForegroundColor_Blue, My.Settings.ForegroundColor_Alpha)
     End Sub
     '显示设置窗口
     Private Event ShowSettingWindow(ByVal sender As Object, ByVal e As EventArgs)
@@ -51,13 +49,13 @@ Public Class LegacySidebarWindow
         CheckUpdate()
     End Sub
     Private Async Function CheckUpdate() As Task
-        Await Task.Run(action:=Sub()
-                                   LegacyUpdateWindow.ReleaseInformation = Me.Network.GetReleaseInformation()
-                                   LegacyUpdateWindow.LatestVersion = New Version(Network.GetLatestVersion(LegacyUpdateWindow.ReleaseInformation))
-                                   If LegacyUpdateWindow.LatestVersion > LegacyUpdateWindow.LocalVersion Then
-                                       RaiseEvent ShowUpdateWindow(Me, New EventArgs)
-                                   End If
-                               End Sub)
+       Await Task.Run(action:=Sub()
+                             LegacyUpdateWindow.ReleaseInformation = NetworkManager.GetReleaseInformation()
+                             LegacyUpdateWindow.LatestVersion = New Version(NetworkManager.GetLatestVersion(LegacyUpdateWindow.ReleaseInformation))
+                             If LegacyUpdateWindow.LatestVersion > LegacyUpdateWindow.LocalVersion Then
+                                 RaiseEvent ShowUpdateWindow(Me, New EventArgs)
+                             End If
+                         End Sub)
     End Function
     Private Sub MainWindow_LoadTable(sender As Object, e As EventArgs) Handles Me.LoadTable
         '设置日期
@@ -70,36 +68,36 @@ Public Class LegacySidebarWindow
         '判断文字长度
         Select Case My.Settings.WindowMode
             Case "Wide"
-                MorWeekday.Text = Core.AddSpace(Core.GetChineseFullWeekName(NowWeekday), 1, 1)
+                MorWeekday.Text = AddSpace(GetChineseFullWeekName(NowWeekday), 1, 1)
             Case "Narrow"
-                MorWeekday.Text = Core.AddSpace(Core.GetChineseWeekLiteName(NowWeekday), 1, 5)
+                MorWeekday.Text = AddSpace(GetChineseWeekLiteName(NowWeekday), 1, 5)
         End Select
         '开始载入
-        Dim WeekSheet = Core.GetChineseFullWeekName(NowWeekday)
-        Dim ClassJsonString As String = Excel.GetTableInformation(WeekSheet)
-        MorRead.Text = Core.AddSpace(Excel.GetClassName(ClassJsonString, "RangeA"), 1, 1)
-        MorA.Text = Core.AddSpace(Excel.GetClassName(ClassJsonString, "RangeB"), 1, 1)
-        MorB.Text = Core.AddSpace(Excel.GetClassName(ClassJsonString, "RangeC"), 1, 1)
-        MorC.Text = Core.AddSpace(Excel.GetClassName(ClassJsonString, "RangeD"), 1, 1)
-        MorD.Text = Core.AddSpace(Excel.GetClassName(ClassJsonString, "RangeE"), 1, 1)
-        MorE.Text = Core.AddSpace(Excel.GetClassName(ClassJsonString, "RangeF"), 1, 1)
-        MorF.Text = Core.AddSpace(Excel.GetClassName(ClassJsonString, "RangeG"), 1, 1)
-        MorG.Text = Core.AddSpace(Excel.GetClassName(ClassJsonString, "RangeH"), 1, 1)
-        MorH.Text = Core.AddSpace(Excel.GetClassName(ClassJsonString, "RangeI"), 1, 1)
-        MorI.Text = Core.AddSpace(Excel.GetClassName(ClassJsonString, "RangeJ"), 1, 1)
-        MorJ.Text = Core.AddSpace(Excel.GetClassName(ClassJsonString, "RangeK"), 1, 1)
-        MorStudy.Text = Core.AddSpace(Excel.GetClassName(ClassJsonString, "RangeL"), 1, 1)
+        Dim WeekSheet = GetChineseFullWeekName(NowWeekday)
+        Dim ClassJsonString As String = ExcelManager.GetTableInformation(WeekSheet)
+        MorRead.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeA"), 1, 1)
+        MorA.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeB"), 1, 1)
+        MorB.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeC"), 1, 1)
+        MorC.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeD"), 1, 1)
+        MorD.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeE"), 1, 1)
+        MorE.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeF"), 1, 1)
+        MorF.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeG"), 1, 1)
+        MorG.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeH"), 1, 1)
+        MorH.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeI"), 1, 1)
+        MorI.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeJ"), 1, 1)
+        MorJ.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeK"), 1, 1)
+        MorStudy.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeL"), 1, 1)
     End Sub
     '调整窗口大小
     Private Sub MainWindow_MouseDoubleClick(sender As Object, e As MouseButtonEventArgs) Handles Me.MouseDoubleClick
         If Width = 48 Then
             Width = 96
             Left = Screen.PrimaryScreen.WorkingArea.Width / (ScreenDPI.dpix / 96) - 96
-            MorWeekday.Text = Core.AddSpace(Core.GetChineseFullWeekName(NowWeekday), 1, 1)
+            MorWeekday.Text = AddSpace(GetChineseFullWeekName(NowWeekday), 1, 1)
         Else
             Width = 48
             Left = Screen.PrimaryScreen.WorkingArea.Width / (ScreenDPI.dpix / 96) - 48
-            MorWeekday.Text = Core.AddSpace(Core.GetChineseWeekLiteName(NowWeekday), 1, 5)
+            MorWeekday.Text = AddSpace(GetChineseWeekLiteName(NowWeekday), 1, 5)
         End If
     End Sub
     '设置/取消窗口置顶
@@ -126,16 +124,16 @@ Public Class LegacySidebarWindow
         My.Settings.Save()
     End Sub
     '通知区域
-    ReadOnly MyNotifyIcon As NotifyIcon = New NotifyIcon
+    ReadOnly MyNotifyIcon As New NotifyIcon
     Private Event InitializeNotifyIcon(ByVal sender As Object, ByVal e As EventArgs)
-    Dim WithEvents NotifyIconContextMenuStrip As ContextMenuStrip = New ContextMenuStrip
-    Dim WithEvents NotifyIconToolStripMenuItemQuickly As ToolStripMenuItem = New ToolStripMenuItem
-    Dim WithEvents NotifyIconToolStripMenuItemEdit As ToolStripMenuItem = New ToolStripMenuItem
-    Dim WithEvents NotifyIconToolStripMenuItemUp As ToolStripMenuItem = New ToolStripMenuItem
-    Dim WithEvents NotifyIconToolStripMenuItemAbout As ToolStripMenuItem = New ToolStripMenuItem
-    Dim WithEvents NotifyIconToolStripMenuItemSetting As ToolStripMenuItem = New ToolStripMenuItem
-    Dim WithEvents NotifyIconToolStripMenuItemTop As ToolStripMenuItem = New ToolStripMenuItem
-    Dim WithEvents NotifyIconToolStripMenuItemExit As ToolStripMenuItem = New ToolStripMenuItem
+    Dim WithEvents NotifyIconContextMenuStrip As New ContextMenuStrip
+    Dim WithEvents NotifyIconToolStripMenuItemQuickly As New ToolStripMenuItem
+    Dim WithEvents NotifyIconToolStripMenuItemEdit As New ToolStripMenuItem
+    Dim WithEvents NotifyIconToolStripMenuItemUp As New ToolStripMenuItem
+    Dim WithEvents NotifyIconToolStripMenuItemAbout As New ToolStripMenuItem
+    Dim WithEvents NotifyIconToolStripMenuItemSetting As New ToolStripMenuItem
+    Dim WithEvents NotifyIconToolStripMenuItemTop As New ToolStripMenuItem
+    Dim WithEvents NotifyIconToolStripMenuItemExit As New ToolStripMenuItem
     Private Sub MainWindow_InitializeNotifyIcon(sender As Object, e As EventArgs) Handles Me.InitializeNotifyIcon
 
         '初始化通知图标

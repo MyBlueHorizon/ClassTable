@@ -29,7 +29,7 @@ Public Class ExcelManager
     End Function
 
     '解析 Json 数据
-    Public Function GetClassName(ByVal ClassJsonString As String, ByVal ClassBlock As String)
+    Public Shared Function GetClassName(ByVal ClassJsonString As String, ByVal ClassBlock As String)
         Dim GetName
         GetName = JsonConvert.DeserializeObject(ClassJsonString)
         Dim ClassName As String = GetName(ClassBlock)

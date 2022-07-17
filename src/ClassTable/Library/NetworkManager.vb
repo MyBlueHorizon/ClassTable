@@ -37,7 +37,7 @@ Public Class NetworkManager
     End Function
 
     '解析更新版本
-    Public Function GetLatestVersion(ByVal ReleaseInformation)
+    Public Shared Function GetLatestVersion(ByVal ReleaseInformation)
         Dim LatestVersion
         Try
             LatestVersion = JsonConvert.DeserializeObject(ReleaseInformation)
@@ -53,7 +53,7 @@ Public Class NetworkManager
     End Function
 
     '解析下载链接
-    Public Function GetDownloadUrl(ByVal ReleaseInformation)
+    Public Shared Function GetDownloadUrl(ByVal ReleaseInformation)
         Dim DownloadUrl
         Try
             DownloadUrl = JsonConvert.DeserializeObject(ReleaseInformation)

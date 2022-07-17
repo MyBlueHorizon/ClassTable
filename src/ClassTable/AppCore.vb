@@ -3,7 +3,7 @@
     '字符串转换
 
     '日期单字转换
-    Public Function GetChineseWeekLiteName(ByVal NowWeekday)
+    Public Shared Function GetChineseWeekLiteName(ByVal NowWeekday)
         Dim ChineseWeekName = "期"
         Select Case NowWeekday
             Case 1
@@ -25,14 +25,14 @@
     End Function
 
     '日期双字转换
-    Public Function GetChineseFullWeekName(ByVal NowWeekday)
+    Public Shared Function GetChineseFullWeekName(ByVal NowWeekday)
         Dim ChineseWeekName
         ChineseWeekName = WeekdayName(NowWeekday, FirstDayOfWeekValue:=FirstDayOfWeek.Sunday, Abbreviate:=True)
         Return ChineseWeekName
     End Function
 
     '空格添加
-    Public Function AddSpace(ByVal OriginStr, ByVal SpaceS, ByVal SpaceN)
+    Public Shared Function AddSpace(ByVal OriginStr, ByVal SpaceS, ByVal SpaceN)
         Dim ReturnString
         Dim SpaceString
         If OriginStr = "" Then
