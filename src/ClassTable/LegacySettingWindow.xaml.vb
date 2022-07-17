@@ -1,6 +1,6 @@
 ﻿Imports System.ComponentModel
 Public Class LegacySettingWindow
-    ReadOnly Core As New LegacyCore
+    ReadOnly Core As New AppCore
     Dim BackgroundRedValue = My.Settings.BackgroundColor_Red
     Dim BackgroundBlueValue = My.Settings.BackgroundColor_Blue
     Dim BackgroundGreenValue = My.Settings.BackgroundColor_Green

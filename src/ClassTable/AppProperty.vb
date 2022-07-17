@@ -4,6 +4,6 @@
     Public Property AppVersionName As String = My.Settings.AppVersionName
     Public Property AppVersionString As String = AppVersion.ToString + " （" + AppVersionName + "）"
     '颜色相关
-    Public Property AppForegroundColorBrush As Brush = LegacyCore.GetWindowBrush(My.Settings.ForegroundColor_Red, My.Settings.ForegroundColor_Green, My.Settings.ForegroundColor_Blue, My.Settings.ForegroundColor_Alpha)
-    Public Property AppBackgroundColorBrush As Brush = LegacyCore.GetWindowBrush(My.Settings.BackgroundColor_Red, My.Settings.BackgroundColor_Green, My.Settings.BackgroundColor_Blue, My.Settings.BackgroundColor_Alpha)
+    Public Property AppForegroundColorBrush As Brush = AppCore.GetWindowBrush(My.Settings.ForegroundColor_Red, My.Settings.ForegroundColor_Green, My.Settings.ForegroundColor_Blue, My.Settings.ForegroundColor_Alpha)
+    Public Property AppBackgroundColorBrush As Brush = AppCore.GetWindowBrush(My.Settings.BackgroundColor_Red, My.Settings.BackgroundColor_Green, My.Settings.BackgroundColor_Blue, My.Settings.BackgroundColor_Alpha)
 End Class

@@ -1,8 +1,8 @@
 ﻿Imports System.ComponentModel
 Imports System.Net
 Public Class LegacyUpdateWindow
-    ReadOnly Core As New LegacyCore
-    ReadOnly Network As New ClassTable.LegacyNetwork
+    ReadOnly Core As New AppCore
+    ReadOnly Network As New ClassTable.NetworkManager
     ReadOnly MyWebClient As New Net.WebClient()
     ReadOnly UpdateFilePath = System.Environment.GetEnvironmentVariable("TEMP") + "\ClassTableInstall.msi"
     Public WithEvents DownloadEvents As WebClient = MyWebClient
@@ -44,7 +44,7 @@ Public Class LegacyUpdateWindow
     End Sub
     Private Sub Button_Update_Click(sender As Object, e As RoutedEventArgs) Handles Button_Update.Click
         If Button_Update.Content = "刷  新" Then
-            ReleaseInformation = Network.GetReleaseInformation
+            ReleaseInformation = Me.Network.GetReleaseInformation
             LatestVersion = New Version(Network.GetLatestVersion(ReleaseInformation))
             Label_LatestVersion.Content = LatestVersion
             If LatestVersion > LocalVersion Then

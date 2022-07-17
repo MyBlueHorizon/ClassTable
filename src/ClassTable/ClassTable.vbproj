@@ -97,17 +97,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LegacySidebarWindow.xaml">
+    <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LegacyUpdateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Compile Include="Application.xaml.vb">
       <DependentUpon>Application.xaml</DependentUpon>
@@ -117,21 +113,17 @@
     <Compile Include="LegacyAboutWindow.xaml.vb">
       <DependentUpon>LegacyAboutWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LegacyCore.vb" />
-    <Compile Include="LegacyExcel.vb" />
-    <Compile Include="LegacyNetwork.vb" />
+    <Compile Include="AppCore.vb" />
+    <Compile Include="Library\ExcelManager.vb" />
+    <Compile Include="Library\NetworkManager.vb" />
     <Compile Include="LegacySettingWindow.xaml.vb">
       <DependentUpon>LegacySettingWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LegacySidebarWindow.xaml.vb">
-      <DependentUpon>LegacySidebarWindow.xaml</DependentUpon>
+    <Compile Include="MainWindow.xaml.vb">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="LegacyUpdateWindow.xaml.vb">
       <DependentUpon>LegacyUpdateWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow.xaml.vb">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
