@@ -30,6 +30,15 @@
         ChineseWeekName = WeekdayName(NowWeekday, FirstDayOfWeekValue:=FirstDayOfWeek.Sunday, Abbreviate:=True)
         Return ChineseWeekName
     End Function
+    Public Shared Function OneChar(ByVal OriginStr)
+        Dim ReturnString
+        If OriginStr = "" Then
+            ReturnString = ""
+        Else
+            ReturnString = OriginStr.ToString.Chars(0)
+        End If
+        Return ReturnString
+    End Function
 
     '空格添加
     Public Shared Function AddSpace(ByVal OriginStr, ByVal SpaceS, ByVal SpaceN)

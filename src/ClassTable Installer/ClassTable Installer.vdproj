@@ -274,7 +274,7 @@
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_32C447D273B04A61B090EEA10F8471FC"
             {
             "SourcePath" = "8:..\\ClassTable\\TableFile.xlsx"
-            "TargetName" = "8:TableFile.xlsx"
+            "TargetName" = "8:tablefile.xlsx"
             "Tag" = "8:"
             "Folder" = "8:_B7C26A0CA6A342DEAA3CA2EF3670DDCC"
             "Condition" = "8:"
@@ -356,7 +356,7 @@
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_783A8960C3A445BA8E9AEE7CB0433965"
             {
             "SourcePath" = "8:..\\ClassTable\\Resource\\Icons\\TableIcon.ico"
-            "TargetName" = "8:TableIcon.ico"
+            "TargetName" = "8:tableicon.ico"
             "Tag" = "8:"
             "Folder" = "8:_F796734E1F3A46538ED6F6E676F77505"
             "Condition" = "8:"
@@ -645,7 +645,7 @@
         "ARPCONTACT" = "8:MyBlueHorizon"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:ClassTable 安装程序"
-        "ARPURLINFOABOUT" = "8:https://MyBlueHorizon.github.io"
+        "ARPURLINFOABOUT" = "8:https://mybluehorizon.github.io"
         "ARPPRODUCTICON" = "8:_355685E322F14581B0FDB53F1809C340"
         "ARPIconIndex" = "3:32512"
         "SearchPath" = "8:"
@@ -1256,7 +1256,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_355685E322F14581B0FDB53F1809C340"
             {
-            "SourcePath" = "8:..\\ClassTable\\obj\\Release\\ClassTable.exe"
+            "SourcePath" = "8:..\\ClassTable\\obj\\Debug\\ClassTable.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_F796734E1F3A46538ED6F6E676F77505"

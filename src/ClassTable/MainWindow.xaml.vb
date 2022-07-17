@@ -12,6 +12,19 @@ Public Class LegacySidebarWindow
                 Left = Screen.PrimaryScreen.WorkingArea.Width / (ScreenDPI.dpix / 96) - 96
             Case "Narrow"
                 Width = 48
+                MorWeekday.Width = 96
+                MorRead.Width = 48
+                MorA.Width = 48
+                MorB.Width = 48
+                MorC.Width = 48
+                MorD.Width = 48
+                MorE.Width = 48
+                MorF.Width = 48
+                MorG.Width = 48
+                MorH.Width = 48
+                MorI.Width = 48
+                MorJ.Width = 48
+                MorStudy.Width = 48
                 Left = Screen.PrimaryScreen.WorkingArea.Width / (ScreenDPI.dpix / 96) - 48
         End Select
         '设置颜色
@@ -30,9 +43,9 @@ Public Class LegacySidebarWindow
     Private Sub MainWindow_ShowUpdateWindow(sender As Object, e As EventArgs) Handles Me.ShowUpdateWindow
         MyUpdateWindow.ShowDialog()
     End Sub
-    '显示设置窗口
-    Private Event ShowAboutWindow(ByVal sender As Object, ByVal e As EventArgs)
+    '显示关于窗口
     ReadOnly MyAboutWindow As New LegacyAboutWindow
+    Private Event ShowAboutWindow(ByVal sender As Object, ByVal e As EventArgs)
     Private Sub LegacySidebarWindow_ShowAboutWindow(sender As Object, e As EventArgs) Handles Me.ShowAboutWindow
         MyAboutWindow.ShowDialog()
     End Sub
@@ -41,22 +54,30 @@ Public Class LegacySidebarWindow
     Public Shared NowWeekday = Weekday(DateValue(DateString))
     Public Event LoadTable(ByVal sender As Object, ByVal e As EventArgs)
     Private Sub MainWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        RaiseEvent ReadConfigInformation(Me, New EventArgs)
+        RaiseEvent LoadTable(Me, New EventArgs)
         RaiseEvent InitializeNotifyIcon(Me, New EventArgs)
         '载入课表
-        RaiseEvent LoadTable(Me, New EventArgs)
-        RaiseEvent ReadConfigInformation(Me, New EventArgs)
+        Dim task = CheckUpdate()
         GC.Collect()
-        CheckUpdate()
     End Sub
     Private Async Function CheckUpdate() As Task
         Await Task.Run(action:=Sub()
                                    LegacyUpdateWindow.ReleaseInformation = NetworkManager.GetReleaseInformation()
                                    LegacyUpdateWindow.LatestVersion = New Version(NetworkManager.GetLatestVersion(LegacyUpdateWindow.ReleaseInformation))
-                                   If LegacyUpdateWindow.LatestVersion > LegacyUpdateWindow.LocalVersion Then
-                                       RaiseEvent ShowUpdateWindow(Me, New EventArgs)
-                                   End If
                                End Sub)
+        If LegacyUpdateWindow.LatestVersion > LegacyUpdateWindow.LocalVersion Then
+            MyNotifyIcon.BalloonTipIcon = ToolTipIcon.Info
+            MyNotifyIcon.BalloonTipText = "发现可用的版本更新，为确保安全性与可用性请及时更新。" + vbLf +
+                                       "如果未弹出更新窗口，请 右击/长按通知图标-快捷设置-更新 进入更新页面。"
+            MyNotifyIcon.BalloonTipTitle = "发现可用更新"
+            MyNotifyIcon.ShowBalloonTip(20)
+            RaiseEvent ShowUpdateWindow(Me, New EventArgs)
+        End If
     End Function
+
+    ReadOnly WeekSheet = GetChineseFullWeekName(NowWeekday)
+    ReadOnly ClassJsonString As String = ExcelManager.GetTableInformation(WeekSheet)
     Private Sub MainWindow_LoadTable(sender As Object, e As EventArgs) Handles Me.LoadTable
         '设置日期
         If My.Settings.Mdate = "No" Then
@@ -69,35 +90,97 @@ Public Class LegacySidebarWindow
         Select Case My.Settings.WindowMode
             Case "Wide"
                 MorWeekday.Text = AddSpace(GetChineseFullWeekName(NowWeekday), 1, 1)
+                '开始载入
+                MorRead.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeA"), 1, 1)
+                MorA.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeB"), 1, 1)
+                MorB.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeC"), 1, 1)
+                MorC.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeD"), 1, 1)
+                MorD.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeE"), 1, 1)
+                MorE.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeF"), 1, 1)
+                MorF.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeG"), 1, 1)
+                MorG.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeH"), 1, 1)
+                MorH.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeI"), 1, 1)
+                MorI.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeJ"), 1, 1)
+                MorJ.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeK"), 1, 1)
+                MorStudy.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeL"), 1, 1)
             Case "Narrow"
-                MorWeekday.Text = AddSpace(GetChineseWeekLiteName(NowWeekday), 1, 5)
+                MorWeekday.Width = 48
+                MorWeekday.Text = GetChineseWeekLiteName(NowWeekday)
+                MorRead.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeA"))
+                MorA.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeB"))
+                MorB.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeC"))
+                MorC.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeD")）
+                MorD.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeE")）
+                MorE.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeF")）
+                MorF.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeG")）
+                MorG.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeH")）
+                MorH.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeI")）
+                MorI.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeJ")）
+                MorJ.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeK")）
+                MorStudy.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeL")）
         End Select
         '开始载入
-        Dim WeekSheet = GetChineseFullWeekName(NowWeekday)
-        Dim ClassJsonString As String = ExcelManager.GetTableInformation(WeekSheet)
-        MorRead.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeA"), 1, 1)
-        MorA.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeB"), 1, 1)
-        MorB.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeC"), 1, 1)
-        MorC.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeD"), 1, 1)
-        MorD.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeE"), 1, 1)
-        MorE.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeF"), 1, 1)
-        MorF.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeG"), 1, 1)
-        MorG.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeH"), 1, 1)
-        MorH.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeI"), 1, 1)
-        MorI.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeJ"), 1, 1)
-        MorJ.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeK"), 1, 1)
-        MorStudy.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeL"), 1, 1)
     End Sub
     '调整窗口大小
     Private Sub MainWindow_MouseDoubleClick(sender As Object, e As MouseButtonEventArgs) Handles Me.MouseDoubleClick
         If Width = 48 Then
             Width = 96
+            MorWeekday.Width = 96
+            MorRead.Width = 96
+            MorA.Width = 96
+            MorB.Width = 96
+            MorC.Width = 96
+            MorD.Width = 96
+            MorE.Width = 96
+            MorF.Width = 96
+            MorG.Width = 96
+            MorH.Width = 96
+            MorI.Width = 96
+            MorJ.Width = 96
+            MorStudy.Width = 96
+            MorRead.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeA"), 1, 1)
+            MorA.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeB"), 1, 1)
+            MorB.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeC"), 1, 1)
+            MorC.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeD"), 1, 1)
+            MorD.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeE"), 1, 1)
+            MorE.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeF"), 1, 1)
+            MorF.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeG"), 1, 1)
+            MorG.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeH"), 1, 1)
+            MorH.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeI"), 1, 1)
+            MorI.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeJ"), 1, 1)
+            MorJ.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeK"), 1, 1)
+            MorStudy.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeL"), 1, 1)
             Left = Screen.PrimaryScreen.WorkingArea.Width / (ScreenDPI.dpix / 96) - 96
             MorWeekday.Text = AddSpace(GetChineseFullWeekName(NowWeekday), 1, 1)
         Else
             Width = 48
+            MorWeekday.Width = 48
+            MorRead.Width = 48
+            MorA.Width = 48
+            MorB.Width = 48
+            MorC.Width = 48
+            MorD.Width = 48
+            MorE.Width = 48
+            MorF.Width = 48
+            MorG.Width = 48
+            MorH.Width = 48
+            MorI.Width = 48
+            MorJ.Width = 48
+            MorStudy.Width = 48
             Left = Screen.PrimaryScreen.WorkingArea.Width / (ScreenDPI.dpix / 96) - 48
-            MorWeekday.Text = AddSpace(GetChineseWeekLiteName(NowWeekday), 1, 5)
+            MorWeekday.Text = GetChineseWeekLiteName(NowWeekday)
+            MorRead.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeA"))
+            MorA.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeB"))
+            MorB.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeC"))
+            MorC.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeD")）
+            MorD.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeE")）
+            MorE.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeF")）
+            MorF.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeG")）
+            MorG.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeH")）
+            MorH.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeI")）
+            MorI.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeJ")）
+            MorJ.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeK")）
+            MorStudy.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeL")）
         End If
     End Sub
     '设置/取消窗口置顶

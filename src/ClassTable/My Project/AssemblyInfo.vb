@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("在桌面上显示当天课程。")>
 <Assembly: AssemblyCompany("ATHS Studio")>
 <Assembly: AssemblyProduct("SmartClass - ClassTable")>
-<Assembly: AssemblyCopyright("© ATHS Studio 2016 - 2021")>
+<Assembly: AssemblyCopyright("© ATHS Studio 2016 - 2022")>
 <Assembly: AssemblyTrademark("")>
 <Assembly: ComVisible(false)>
 

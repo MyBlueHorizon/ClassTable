@@ -7,7 +7,7 @@ Public Class LegacyAboutWindow
         DragMove()
     End Sub
     Private Sub LegacyAboutWindow_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        Hide()
         e.Cancel = True
+        Hide()
     End Sub
 End Class
