@@ -1,9 +1,5 @@
-﻿Imports System
-Imports System.Globalization
-Imports System.Reflection
-Imports System.Resources
+﻿Imports System.Reflection
 Imports System.Runtime.InteropServices
-Imports System.Windows
 
 ' 有关程序集的一般信息由以下
 ' 控制。更改这些特性值可修改
@@ -15,7 +11,7 @@ Imports System.Windows
 <Assembly: AssemblyDescription("在桌面上显示当天课程。")>
 <Assembly: AssemblyCompany("ATHS Studio")>
 <Assembly: AssemblyProduct("SmartClass - ClassTable")>
-<Assembly: AssemblyCopyright("© ATHS Studio 2016 - 2021")>
+<Assembly: AssemblyCopyright("© ATHS Studio 2016 - 2022")>
 <Assembly: AssemblyTrademark("")>
 <Assembly: ComVisible(false)>
 
@@ -55,5 +51,5 @@ Imports System.Windows
 '通过使用 "*"，如下所示:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.7.2.0")>
-<Assembly: AssemblyFileVersion("1.7.2.0")>
+<Assembly: AssemblyVersion("1.7.3.0")>
+<Assembly: AssemblyFileVersion("1.7.3.0")>

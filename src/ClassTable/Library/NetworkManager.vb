@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Net
 Imports Newtonsoft.Json
-Public Class LegacyNetwork
+Public Class NetworkManager
 
     '网络与更新部分
 
@@ -37,7 +37,7 @@ Public Class LegacyNetwork
     End Function
 
     '解析更新版本
-    Public Function GetLatestVersion(ByVal ReleaseInformation)
+    Public Shared Function GetLatestVersion(ByVal ReleaseInformation)
         Dim LatestVersion
         Try
             LatestVersion = JsonConvert.DeserializeObject(ReleaseInformation)
@@ -53,7 +53,7 @@ Public Class LegacyNetwork
     End Function
 
     '解析下载链接
-    Public Function GetDownloadUrl(ByVal ReleaseInformation)
+    Public Shared Function GetDownloadUrl(ByVal ReleaseInformation)
         Dim DownloadUrl
         Try
             DownloadUrl = JsonConvert.DeserializeObject(ReleaseInformation)

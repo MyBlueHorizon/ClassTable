@@ -1,8 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Net
+Imports ClassTable.AppCore
 Public Class LegacyUpdateWindow
-    ReadOnly Core As New LegacyCore
-    ReadOnly Network As New ClassTable.LegacyNetwork
     ReadOnly MyWebClient As New Net.WebClient()
     ReadOnly UpdateFilePath = System.Environment.GetEnvironmentVariable("TEMP") + "\ClassTableInstall.msi"
     Public WithEvents DownloadEvents As WebClient = MyWebClient
@@ -27,8 +26,8 @@ Public Class LegacyUpdateWindow
         Windows.Application.Current.Shutdown()
     End Sub
     Private Sub UpdateWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        Background = Core.GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
-        TextBlock_Name.Foreground = Core.GetWindowBrush(ForegroundRedValue, ForegroundGreenValue, ForegroundBlueValue, ForegroundAlphaValue)
+        Background = GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
+        TextBlock_Name.Foreground = GetWindowBrush(ForegroundRedValue, ForegroundGreenValue, ForegroundBlueValue, ForegroundAlphaValue)
         Label_LocalVersion.Content = LocalVersion
         If ReleaseInformation = Nothing Then
             LatestVersion = New Version("0.0.0.0")
@@ -44,8 +43,8 @@ Public Class LegacyUpdateWindow
     End Sub
     Private Sub Button_Update_Click(sender As Object, e As RoutedEventArgs) Handles Button_Update.Click
         If Button_Update.Content = "刷  新" Then
-            ReleaseInformation = Network.GetReleaseInformation
-            LatestVersion = New Version(Network.GetLatestVersion(ReleaseInformation))
+            ReleaseInformation = NetworkManager.GetReleaseInformation
+            LatestVersion = New Version(NetworkManager.GetLatestVersion(ReleaseInformation))
             Label_LatestVersion.Content = LatestVersion
             If LatestVersion > LocalVersion Then
                 Button_Update.Content = "更  新"
@@ -53,7 +52,7 @@ Public Class LegacyUpdateWindow
                 Button_Update.Content = "刷  新"
             End If
         Else
-            MyWebClient.DownloadFileAsync(New Uri(Network.GetDownloadUrl(ReleaseInformation)), UpdateFilePath)
+            MyWebClient.DownloadFileAsync(New Uri(NetworkManager.GetDownloadUrl(ReleaseInformation)), UpdateFilePath)
             Button_Update.IsEnabled = False
         End If
     End Sub
