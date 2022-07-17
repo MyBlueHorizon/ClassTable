@@ -1,9 +1,5 @@
-﻿Imports System
-Imports System.Globalization
-Imports System.Reflection
-Imports System.Resources
+﻿Imports System.Reflection
 Imports System.Runtime.InteropServices
-Imports System.Windows
 
 ' 有关程序集的一般信息由以下
 ' 控制。更改这些特性值可修改

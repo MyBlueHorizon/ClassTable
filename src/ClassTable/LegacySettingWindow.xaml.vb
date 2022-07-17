@@ -1,5 +1,4 @@
 ﻿Imports System.ComponentModel
-Imports System.Windows.Media
 Public Class LegacySettingWindow
     ReadOnly Core As New LegacyCore
     Dim BackgroundRedValue = My.Settings.BackgroundColor_Red

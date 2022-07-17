@@ -1,5 +1,5 @@
-﻿Imports System.Windows.Forms
-Imports System.Drawing
+﻿Imports System.Drawing
+Imports System.Windows.Forms
 Public Class LegacySidebarWindow
     ReadOnly Core As New ClassTable.LegacyCore
     ReadOnly Excel As New ClassTable.LegacyExcel
