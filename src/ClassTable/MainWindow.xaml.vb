@@ -243,5 +243,3 @@ Public Class LegacySidebarWindow
         End Select
     End Function
 End Class
-
-
