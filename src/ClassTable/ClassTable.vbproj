@@ -89,6 +89,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SidebarWindow.xaml.vb">
+      <DependentUpon>SidebarWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="LegacyAboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +128,10 @@
     <Compile Include="LegacyUpdateWindow.xaml.vb">
       <DependentUpon>LegacyUpdateWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="SidebarWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Import Include="System.Threading.Tasks" />
