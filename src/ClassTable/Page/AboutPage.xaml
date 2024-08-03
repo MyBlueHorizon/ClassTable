@@ -1,22 +1,15 @@
-﻿<Window x:Class="LegacyAboutWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ClassTable"
-        mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize"
-        Height="180" Width="320"
-        AllowsTransparency="True"
-        WindowStyle="None"
-        Topmost="True"
-        Icon="Resource/Icons/AppIcon.ico"
-        Background="{Binding AppBackgroundColorBrush}"
-        Title="ClassTable - 关于程序" Foreground="{Binding AppForegroundColorBrush}">
-    <Window.DataContext>
+﻿<Page x:Class="AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClassTable"
+      mc:Ignorable="d" 
+      d:DesignHeight="180" d:DesignWidth="320"
+      Title="ClassTable - 关于程序" >
+    <Page.DataContext>
         <local:AppProperty/>
-    </Window.DataContext>
+    </Page.DataContext>
     <Grid>
         <TextBlock x:Name="TextBlock_Name" HorizontalAlignment="Left" TextWrapping="Wrap" Text="关于程序" VerticalAlignment="Top" Margin="10,10,0,0" FontSize="18" FontFamily="STZhongsong" Foreground="White"/>
         <TextBlock x:Name="TextBlock_AppName" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ClassTable - 桌面课表" VerticalAlignment="Top" Margin="97,13,0,0" FontSize="16" FontFamily="STZhongsong" Foreground="White" Width="213"/>
@@ -30,4 +23,4 @@
         <TextBlock x:Name="TextBlock_License" HorizontalAlignment="Left" TextWrapping="Wrap" Text="本程序基于 MIT 许可发布" VerticalAlignment="Top" Margin="10,124,0,0" FontSize="14" FontFamily="STZhongsong" Foreground="White" Width="199"/>
         <Button x:Name="Button_Back" Content="返  回" HorizontalAlignment="Left" Width="96" FontFamily="STZhongsong" FontSize="28" Height="48" VerticalAlignment="Top" Background="#3DFFFFFF" BorderBrush="{x:Null}" Foreground="{Binding Foreground, ElementName=TextBlock_Name}"  FontWeight="Bold" Margin="214,122,0,0"/>
     </Grid>
-</Window>
+</Page>
