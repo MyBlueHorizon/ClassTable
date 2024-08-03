@@ -24,19 +24,25 @@ Public Class MainWindow
     Public Shared ReadOnly MyFunctionWindow As New FunctionWindow
     Private Sub MainWindow_ShowSettingWindow(sender As Object, e As EventArgs) Handles Me.ShowSettingWindow
         MyFunctionWindow.ChangeToSetting()
-        MyFunctionWindow.ShowDialog()
+        If MyFunctionWindow.IsVisible = False Then
+            MyFunctionWindow.ShowDialog()
+        End If
     End Sub
     '显示更新窗口
     Private Event ShowUpdateWindow(ByVal sender As Object, ByVal e As EventArgs)
     Private Sub MainWindow_ShowUpdateWindow(sender As Object, e As EventArgs) Handles Me.ShowUpdateWindow
         MyFunctionWindow.ChangeToUpdate()
-        MyFunctionWindow.ShowDialog()
+        If MyFunctionWindow.IsVisible = False Then
+            MyFunctionWindow.ShowDialog()
+        End If
     End Sub
     '显示关于窗口
     Private Event ShowAboutWindow(ByVal sender As Object, ByVal e As EventArgs)
     Private Sub LegacySidebarWindow_ShowAboutWindow(sender As Object, e As EventArgs) Handles Me.ShowAboutWindow
         MyFunctionWindow.ChangeToAbout()
-        MyFunctionWindow.ShowDialog()
+        If MyFunctionWindow.IsVisible = False Then
+            MyFunctionWindow.ShowDialog()
+        End If
     End Sub
     Private Sub MainWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         ConfigFormSetting()
