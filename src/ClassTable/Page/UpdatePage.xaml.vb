@@ -1,7 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Net
 Imports ClassTable.AppCore
-Public Class LegacyUpdateWindow
+Public Class UpdatePage
     ReadOnly MyWebClient As New Net.WebClient()
     ReadOnly UpdateFilePath = System.Environment.GetEnvironmentVariable("TEMP") + "\ClassTableInstall.msi"
     Public WithEvents DownloadEvents As WebClient = MyWebClient
@@ -57,13 +57,6 @@ Public Class LegacyUpdateWindow
         End If
     End Sub
     Private Sub Button_Back_Click(sender As Object, e As RoutedEventArgs) Handles Button_Back.Click
-        Hide()
-    End Sub
-    Private Sub LegacyUpdatWindow_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles Me.MouseLeftButtonDown
-        DragMove()
-    End Sub
-    Private Sub LegacyUpdateWindow_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        Hide()
-        e.Cancel = True
+        LegacySidebarWindow.MyFunctionWindow.HideFunctionWindow()
     End Sub
 End Class

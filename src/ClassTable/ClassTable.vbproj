@@ -89,22 +89,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FunctionWindow.xaml.vb">
+      <DependentUpon>FunctionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\AboutPage.xaml.vb">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\SettingPage.xaml.vb">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\UpdatePage.xaml.vb">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SidebarWindow.xaml.vb">
       <DependentUpon>SidebarWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="LegacyAboutWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LegacySettingWindow.xaml">
+    <Page Include="FunctionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LegacyUpdateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -113,21 +117,24 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppProperty.vb" />
-    <Compile Include="LegacyAboutWindow.xaml.vb">
-      <DependentUpon>LegacyAboutWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AppCore.vb" />
     <Compile Include="Library\ExcelManager.vb" />
     <Compile Include="Library\NetworkManager.vb" />
-    <Compile Include="LegacySettingWindow.xaml.vb">
-      <DependentUpon>LegacySettingWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.vb">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LegacyUpdateWindow.xaml.vb">
-      <DependentUpon>LegacyUpdateWindow.xaml</DependentUpon>
-    </Compile>
+    <Page Include="Page\AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page\SettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page\UpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SidebarWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

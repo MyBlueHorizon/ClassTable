@@ -1,13 +1,12 @@
-﻿<Window x:Class="LegacySettingWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ClassTable"
-        mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen" Background="#7A006060"
-        ResizeMode="NoResize"
-        Height="180" Width="320" WindowStyle="None" AllowsTransparency="True" Topmost="True" Title="ClassTable - 程序设置" Icon="Resource/Icons/AppIcon.ico" >
+﻿<Page x:Class="SettingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClassTable"
+      mc:Ignorable="d" 
+      d:DesignHeight="180" d:DesignWidth="320"
+      Height="180" Width="320" Title="ClassTable - 程序设置">
     <Grid>
         <Button x:Name="Button_Back" Content="返  回" HorizontalAlignment="Left" Width="96" FontFamily="STZhongsong" FontSize="28" Height="48" VerticalAlignment="Top" Background="#3DFFFFFF" BorderBrush="{x:Null}" Foreground="{Binding Foreground, ElementName=TextBlock_Weekday}"  FontWeight="Bold" Margin="10,122,0,0"/>
         <Button x:Name="Button_Save" Content="存储 / 应用" HorizontalAlignment="Left" Width="192" FontFamily="STZhongsong" FontSize="28" Height="48" VerticalAlignment="Top" Background="#3DFFFFFF" BorderBrush="{x:Null}" Foreground="{Binding Foreground, ElementName=TextBlock_Weekday}"  FontWeight="Bold" Margin="118,122,0,0"/>
@@ -26,4 +25,4 @@
         <TextBox x:Name="Textbox_BlueValue" HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="{Binding Value, ElementName=Slider_BlueBar}" VerticalAlignment="Top" Width="32" Margin="278,76,0,0" Background="#3DFFFFFF" Foreground="White" BorderBrush="#47FFFFFF" TextAlignment="Center" FontFamily="STZhongsong" FontWeight="Bold"/>
         <TextBox x:Name="Textbox_GreenValue" HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="{Binding Value, ElementName=Slider_GreenBar}" VerticalAlignment="Top" Width="32" Margin="278,53,0,0" Background="#3DFFFFFF" Foreground="White" BorderBrush="#47FFFFFF" TextAlignment="Center" FontFamily="STZhongsong" FontWeight="Bold"/>
     </Grid>
-</Window>
+</Page>

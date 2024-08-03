@@ -22,21 +22,22 @@ Public Class LegacySidebarWindow
     End Function
     '显示设置窗口
     Private Event ShowSettingWindow(ByVal sender As Object, ByVal e As EventArgs)
-    ReadOnly MySettingWindow As New LegacySettingWindow
+    Public Shared ReadOnly MyFunctionWindow As New FunctionWindow
     Private Sub MainWindow_ShowSettingWindow(sender As Object, e As EventArgs) Handles Me.ShowSettingWindow
-        MySettingWindow.ShowDialog()
+        MyFunctionWindow.ChangeToSetting()
+        MyFunctionWindow.ShowDialog()
     End Sub
     '显示更新窗口
     Private Event ShowUpdateWindow(ByVal sender As Object, ByVal e As EventArgs)
-    ReadOnly MyUpdateWindow As New LegacyUpdateWindow
     Private Sub MainWindow_ShowUpdateWindow(sender As Object, e As EventArgs) Handles Me.ShowUpdateWindow
-        MyUpdateWindow.ShowDialog()
+        MyFunctionWindow.ChangeToUpdate()
+        MyFunctionWindow.ShowDialog()
     End Sub
     '显示关于窗口
-    ReadOnly MyAboutWindow As New LegacyAboutWindow
     Private Event ShowAboutWindow(ByVal sender As Object, ByVal e As EventArgs)
     Private Sub LegacySidebarWindow_ShowAboutWindow(sender As Object, e As EventArgs) Handles Me.ShowAboutWindow
-        MyAboutWindow.ShowDialog()
+        MyFunctionWindow.ChangeToAbout()
+        MyFunctionWindow.ShowDialog()
     End Sub
     Private Sub MainWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         ConfigFormSetting()
@@ -48,10 +49,10 @@ Public Class LegacySidebarWindow
     End Sub
     Private Async Function CheckUpdate() As Task
         Await Task.Run(action:=Sub()
-                                   LegacyUpdateWindow.ReleaseInformation = NetworkManager.GetReleaseInformation()
-                                   LegacyUpdateWindow.LatestVersion = New Version(NetworkManager.GetLatestVersion(LegacyUpdateWindow.ReleaseInformation))
+                                   UpdatePage.ReleaseInformation = NetworkManager.GetReleaseInformation()
+                                   UpdatePage.LatestVersion = New Version(NetworkManager.GetLatestVersion(UpdatePage.ReleaseInformation))
                                End Sub)
-        If LegacyUpdateWindow.LatestVersion > LegacyUpdateWindow.LocalVersion Then
+        If UpdatePage.LatestVersion > UpdatePage.LocalVersion Then
             MyNotifyIcon.BalloonTipIcon = ToolTipIcon.Info
             MyNotifyIcon.BalloonTipText = "发现可用的版本更新，为确保安全性与可用性请及时更新。" + vbLf +
                                        "如果未弹出更新窗口，请 右击/长按通知图标-快捷设置-更新 进入更新页面。"
