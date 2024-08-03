@@ -1,13 +1,13 @@
 ﻿Imports System.Drawing
 Imports System.Windows.Forms
 Imports ClassTable.AppCore
-Public Class LegacySidebarWindow
+Public Class MainWindow
     Private Property WindowMode As String = My.Settings.WindowMode
     ReadOnly ScreenDPI = Graphics.FromHwnd(IntPtr.Zero)
     ReadOnly Apppart = AppDomain.CurrentDomain.BaseDirectory
     Public Shared NowWeekday = Weekday(DateValue(DateString))
     '读取配置文件
-    Private Function ConfigFormSetting()
+    Private Sub ConfigFormSetting()
         If My.Settings.Mdate = "No" Then
         Else
             NowWeekday = My.Settings.Mdate
@@ -18,8 +18,7 @@ Public Class LegacySidebarWindow
         SetWindowMode()
         '设置颜色
         SetWindowColor()
-        Return True
-    End Function
+    End Sub
     '显示设置窗口
     Private Event ShowSettingWindow(ByVal sender As Object, ByVal e As EventArgs)
     Public Shared ReadOnly MyFunctionWindow As New FunctionWindow
@@ -99,7 +98,7 @@ Public Class LegacySidebarWindow
         My.Settings.Save()
     End Sub
     '通知区域
-    ReadOnly MyNotifyIcon As New NotifyIcon
+    Public Shared ReadOnly MyNotifyIcon As New NotifyIcon
     Private Event InitializeNotifyIcon(ByVal sender As Object, ByVal e As EventArgs)
     Dim WithEvents NotifyIconContextMenuStrip As New ContextMenuStrip
     Dim WithEvents NotifyIconToolStripMenuItemQuickly As New ToolStripMenuItem
@@ -161,7 +160,7 @@ Public Class LegacySidebarWindow
     Private Sub NotifyIconToolStripMenuItemExit_Click(sender As Object, e As EventArgs) Handles NotifyIconToolStripMenuItemExit.Click
         Windows.Application.Current.Shutdown()
     End Sub
-    Private Function SetWindowMode()
+    Private Sub SetWindowMode()
         Select Case WindowMode
             Case "Wide"
                 Width = 96
@@ -179,10 +178,9 @@ Public Class LegacySidebarWindow
                 MorJ.Width = 96
                 MorStudy.Width = 96
                 Left = Screen.PrimaryScreen.WorkingArea.Width / (ScreenDPI.dpix / 96) - 96
-                Return True
             Case "Narrow"
                 Width = 48
-                MorWeekday.Width = 96
+                MorWeekday.Width = 48
                 MorRead.Width = 48
                 MorA.Width = 48
                 MorB.Width = 48
@@ -196,18 +194,13 @@ Public Class LegacySidebarWindow
                 MorJ.Width = 48
                 MorStudy.Width = 48
                 Left = Screen.PrimaryScreen.WorkingArea.Width / (ScreenDPI.dpix / 96) - 48
-                Return True
-            Case Else
-                Return False
         End Select
-    End Function
-    Private Function SetWindowColor()
-        '(Foreground As String, Background As String)
+    End Sub
+    Private Sub SetWindowColor()
         Background = AppCore.GetWindowBrush(My.Settings.BackgroundColor_Red, My.Settings.BackgroundColor_Green, My.Settings.BackgroundColor_Blue, My.Settings.BackgroundColor_Alpha)
         MorWeekday.Foreground = GetWindowBrush(My.Settings.ForegroundColor_Red, My.Settings.ForegroundColor_Green, My.Settings.ForegroundColor_Blue, My.Settings.ForegroundColor_Alpha)
-        Return True
-    End Function
-    Private Function SetClassBlock()
+    End Sub
+    Private Sub SetClassBlock()
         Select Case WindowMode
             Case "Wide"
                 MorRead.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeA"), 1, 1)
@@ -223,7 +216,6 @@ Public Class LegacySidebarWindow
                 MorJ.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeK"), 1, 1)
                 MorStudy.Text = AddSpace(ExcelManager.GetClassName(ClassJsonString, "RangeL"), 1, 1)
                 MorWeekday.Text = AddSpace(GetChineseFullWeekName(NowWeekday), 1, 1)
-                Return True
             Case "Narrow"
                 MorWeekday.Text = GetChineseWeekLiteName(NowWeekday)
                 MorRead.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeA"))
@@ -238,9 +230,6 @@ Public Class LegacySidebarWindow
                 MorI.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeJ")）
                 MorJ.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeK")）
                 MorStudy.Text = OneChar(ExcelManager.GetClassName(ClassJsonString, "RangeL")）
-                Return True
-            Case Else
-                Return False
         End Select
-    End Function
+    End Sub
 End Class
