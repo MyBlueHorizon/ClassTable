@@ -10,7 +10,7 @@
         Background="{Binding AppBackgroundColorBrush}"
         Foreground="{Binding AppForegroundColorBrush}"
         Title="ClassTable - 功能窗口" Height="180" Width="320" AllowsTransparency="True"
-        WindowStyle="None" Topmost="True" Icon="Resource/Icons/AppIcon.ico">
+        WindowStyle="None" Icon="Resource/Icons/AppIcon.ico">
     <Window.DataContext>
         <local:AppProperty/>
     </Window.DataContext>
