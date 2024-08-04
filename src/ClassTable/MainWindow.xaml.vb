@@ -1,6 +1,7 @@
 ﻿Imports System.Drawing
-Imports System.Windows.Forms
 Imports ClassTable.AppCore
+Imports Hardcodet.Wpf.TaskbarNotification
+
 Public Class MainWindow
     Private Property WindowMode As String = My.Settings.WindowMode
     ReadOnly ScreenDPI = Graphics.FromHwnd(IntPtr.Zero)
@@ -18,6 +19,7 @@ Public Class MainWindow
         SetWindowMode()
         '设置颜色
         SetWindowColor()
+        MenuItem_Topmost.IsChecked = Topmost
     End Sub
     '显示设置窗口
     Private Event ShowSettingWindow(ByVal sender As Object, ByVal e As EventArgs)
@@ -47,7 +49,6 @@ Public Class MainWindow
     Private Sub MainWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         ConfigFormSetting()
         SetClassBlock()
-        RaiseEvent InitializeNotifyIcon(Me, New EventArgs)
         '载入课表
         Dim task = CheckUpdate()
         GC.Collect()
@@ -58,11 +59,8 @@ Public Class MainWindow
                                    UpdatePage.LatestVersion = New Version(NetworkManager.GetLatestVersion(UpdatePage.ReleaseInformation))
                                End Sub)
         If UpdatePage.LatestVersion > UpdatePage.LocalVersion Then
-            MyNotifyIcon.BalloonTipIcon = ToolTipIcon.Info
-            MyNotifyIcon.BalloonTipText = "发现可用的版本更新，为确保安全性与可用性请及时更新。" + vbLf +
-                                          "如果未弹出更新窗口，请 右击/长按通知图标-快捷设置-更新 进入更新页面。"
-            MyNotifyIcon.BalloonTipTitle = "发现可用更新"
-            MyNotifyIcon.ShowBalloonTip(20)
+            MyTaskbarIcon.ShowBalloonTip("发现可用更新", "发现可用的版本更新，为确保安全性与可用性请及时更新。" + vbLf +
+                                         "如果未弹出更新窗口，请 右击/长按通知图标-快捷设置-更新 进入更新页面。", BalloonIcon.Info)
             RaiseEvent ShowUpdateWindow(Me, New EventArgs)
         End If
     End Function
@@ -85,11 +83,10 @@ Public Class MainWindow
     Private Sub MorWeekday_MouseDown(sender As Object, e As MouseButtonEventArgs) Handles MorWeekday.MouseDown
         If Topmost = True Then
             Topmost = False
-            NotifyIconToolStripMenuItemTop.Checked = False
         Else
-            Topmost = True
-            NotifyIconToolStripMenuItemTop.Checked = True
+            Topmost = False
         End If
+        MenuItem_Topmost.IsChecked = Topmost
     End Sub
     '启动设置窗口
     Private Sub MorWeekday_MouseRightButtonDown(sender As Object, e As MouseButtonEventArgs) Handles MorWeekday.MouseRightButtonDown
@@ -108,69 +105,28 @@ Public Class MainWindow
         My.Settings.Save()
     End Sub
     '通知区域
-    Public Shared ReadOnly MyNotifyIcon As New NotifyIcon
-    Private Event InitializeNotifyIcon(ByVal sender As Object, ByVal e As EventArgs)
-    Dim WithEvents NotifyIconContextMenuStrip As New ContextMenuStrip
-    Dim WithEvents NotifyIconToolStripMenuItemQuickly As New ToolStripMenuItem
-    Dim WithEvents NotifyIconToolStripMenuItemEdit As New ToolStripMenuItem
-    Dim WithEvents NotifyIconToolStripMenuItemUpdate As New ToolStripMenuItem
-    Dim WithEvents NotifyIconToolStripMenuItemAbout As New ToolStripMenuItem
-    Dim WithEvents NotifyIconToolStripMenuItemSetting As New ToolStripMenuItem
-    Dim WithEvents NotifyIconToolStripMenuItemTop As New ToolStripMenuItem
-    Dim WithEvents NotifyIconToolStripMenuItemExit As New ToolStripMenuItem
-    Private Sub MainWindow_InitializeNotifyIcon(sender As Object, e As EventArgs) Handles Me.InitializeNotifyIcon
-
-        '初始化通知图标
-        MyNotifyIcon.Icon = My.Resources.AppIcon
-        MyNotifyIcon.Visible = True
-        MyNotifyIcon.Text = "ClassTable - 桌面课表"
-        MyNotifyIcon.ContextMenuStrip = NotifyIconContextMenuStrip
-
-        '初始化右键菜单
-        NotifyIconToolStripMenuItemQuickly.Text = "快捷设置"
-        NotifyIconContextMenuStrip.Items.Add(NotifyIconToolStripMenuItemQuickly)
-
-        NotifyIconToolStripMenuItemSetting.Text = "高级设置"
-        NotifyIconToolStripMenuItemQuickly.DropDown.Items.Add(NotifyIconToolStripMenuItemSetting)
-        NotifyIconToolStripMenuItemEdit.Text = "编辑"
-        NotifyIconToolStripMenuItemQuickly.DropDown.Items.Add(NotifyIconToolStripMenuItemEdit)
-        NotifyIconToolStripMenuItemUpdate.Text = "更新"
-        NotifyIconToolStripMenuItemQuickly.DropDown.Items.Add(NotifyIconToolStripMenuItemUpdate)
-        NotifyIconToolStripMenuItemAbout.Text = "关于"
-        NotifyIconToolStripMenuItemQuickly.DropDown.Items.Add(NotifyIconToolStripMenuItemAbout)
-
-        NotifyIconToolStripMenuItemTop.Text = "置顶"
-        NotifyIconContextMenuStrip.Items.Add(NotifyIconToolStripMenuItemTop)
-        NotifyIconToolStripMenuItemTop.Checked = Topmost
-        NotifyIconToolStripMenuItemExit.Text = "关闭"
-        NotifyIconContextMenuStrip.Items.Add(NotifyIconToolStripMenuItemExit)
-
-    End Sub
-
-    Private Sub NotifyIconToolStripMenuItemEdit_Click(sender As Object, e As EventArgs) Handles NotifyIconToolStripMenuItemEdit.Click
+    Private Sub EditTableFile_Click(ByVal sender As Object, ByVal e As RoutedEventArgs)
         Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\ATHS Studio\ClassTable\tablefile.xlsx")
     End Sub
-    Private Sub NotifyIconToolStripMenuItemSetting_Click(sender As Object, e As EventArgs) Handles NotifyIconToolStripMenuItemSetting.Click
+    Private Sub ShowSetting_Click(ByVal sender As Object, ByVal e As RoutedEventArgs)
         RaiseEvent ShowSettingWindow(Me, New EventArgs)
     End Sub
-    Private Sub NotifyIconToolStripMenuItemUpdate_Click(sender As Object, e As EventArgs) Handles NotifyIconToolStripMenuItemUpdate.Click
+    Private Sub ShowUpdate_Click(ByVal sender As Object, ByVal e As RoutedEventArgs)
         RaiseEvent ShowUpdateWindow(Me, New EventArgs)
     End Sub
-    Private Sub NotifyIconToolStripMenuItemAbout_Click(sender As Object, e As EventArgs) Handles NotifyIconToolStripMenuItemAbout.Click
+    Private Sub ShowAbout_Click(ByVal sender As Object, ByVal e As RoutedEventArgs)
         RaiseEvent ShowAboutWindow(Me, New EventArgs)
     End Sub
-    Private Sub NotifyIconToolStripMenuItemTop_Click(sender As Object, e As EventArgs) Handles NotifyIconToolStripMenuItemTop.Click
-        If NotifyIconToolStripMenuItemTop.Checked = True Then
-            NotifyIconToolStripMenuItemTop.Checked = False
-            Topmost = False
-        Else
-            Topmost = True
-            NotifyIconToolStripMenuItemTop.Checked = True
-        End If
+    Private Sub WindowTopmost_Checked(ByVal sender As Object, ByVal e As RoutedEventArgs)
+        Topmost = True
     End Sub
-    Private Sub NotifyIconToolStripMenuItemExit_Click(sender As Object, e As EventArgs) Handles NotifyIconToolStripMenuItemExit.Click
+    Private Sub WindowTopmost_Unchecked(ByVal sender As Object, ByVal e As RoutedEventArgs)
+        Topmost = False
+    End Sub
+    Private Sub AppExit_Click(ByVal sender As Object, ByVal e As RoutedEventArgs)
         Windows.Application.Current.Shutdown()
     End Sub
+    '窗口模式与颜色
     Private Sub SetWindowMode()
         Select Case WindowMode
             Case "Wide"
@@ -188,7 +144,7 @@ Public Class MainWindow
                 MorI.Width = 96
                 MorJ.Width = 96
                 MorStudy.Width = 96
-                Left = Screen.PrimaryScreen.WorkingArea.Width / (ScreenDPI.dpix / 96) - 96
+                Left = Forms.Screen.PrimaryScreen.WorkingArea.Width / (ScreenDPI.dpix / 96) - 96
             Case "Narrow"
                 Width = 48
                 MorWeekday.Width = 48
@@ -204,7 +160,7 @@ Public Class MainWindow
                 MorI.Width = 48
                 MorJ.Width = 48
                 MorStudy.Width = 48
-                Left = Screen.PrimaryScreen.WorkingArea.Width / (ScreenDPI.dpix / 96) - 48
+                Left = Forms.Screen.PrimaryScreen.WorkingArea.Width / (ScreenDPI.dpix / 96) - 48
         End Select
     End Sub
     Private Sub SetWindowColor()

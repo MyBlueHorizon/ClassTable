@@ -1,4 +1,5 @@
 ﻿Imports System.Net
+Imports System.IO
 Public Class UpdatePage
     ReadOnly MyWebClient As New Net.WebClient()
     ReadOnly UpdateFilePath = System.Environment.GetEnvironmentVariable("TEMP") + "\ClassTableInstall.msi"
@@ -12,8 +13,14 @@ Public Class UpdatePage
         Label_Progress.Content = Str(e.ProgressPercentage) + " %"
     End Sub
     Private Sub Client_DownloadFileCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.AsyncCompletedEventArgs) Handles DownloadEvents.DownloadFileCompleted
-        Process.Start(UpdateFilePath)
-        Windows.Application.Current.Shutdown()
+        If New FileInfo(UpdateFilePath).Length = 0 Then
+            Button_Update.IsEnabled = True
+            MsgBox("下载更新文件发生异常，请稍后再试。" + vbCrLf +
+                   "您也可访问支持页面手动获取更新。", Title:="更新错误", Buttons:=MsgBoxStyle.Critical)
+        Else
+            Process.Start(UpdateFilePath)
+            Windows.Application.Current.Shutdown()
+        End If
     End Sub
     Private Sub UpdateWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         Label_LocalVersion.Content = LocalVersion

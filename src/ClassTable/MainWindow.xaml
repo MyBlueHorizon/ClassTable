@@ -1,8 +1,9 @@
-﻿<Window x:Class="MainWindow"
+﻿<Window x:Name="window" x:Class="MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tb="http://www.hardcodet.net/taskbar" 
         xmlns:local="clr-namespace:ClassTable"
         mc:Ignorable="d"
         AllowsTransparency="True" 
@@ -14,6 +15,21 @@
         WindowStartupLocation="CenterScreen"
         Topmost="True" Title="ClassTable - 侧边栏" Icon="Resource/Icons/AppIcon.ico" ShowInTaskbar="False">
     <Grid>
+        <tb:TaskbarIcon x:Name="MyTaskbarIcon" IconSource="Resource/Icons/AppIcon.ico" MenuActivation="LeftOrRightClick" ToolTipText="ClassTable - 桌面课表">
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="MenuItem_Topmost" Header="置顶" IsCheckable="True" Checked="WindowTopmost_Checked" Unchecked="WindowTopmost_Unchecked"/>
+                    <Separator/>
+                    <MenuItem Header="功能菜单">
+                        <MenuItem Header="设置" Click="ShowSetting_Click"/>
+                        <MenuItem Header="更新" Click="ShowUpdate_Click"/>
+                        <MenuItem Header="关于" Click="ShowAbout_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="编辑" Click="EditTableFile_Click"/>
+                    <MenuItem Header="关闭" Click="AppExit_Click"/>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
         <TextBlock x:Name="MorRead" HorizontalAlignment="Left" TextWrapping="Wrap" Text="语 文" VerticalAlignment="Top" Height="48" Width="96" FontWeight="Bold" FontFamily="STZhongsong" FontSize="38" Margin="0,49,0,0" TextAlignment="Center" Foreground="{Binding Foreground, ElementName=MorWeekday}"/>
         <TextBlock x:Name="MorA" HorizontalAlignment="Left" TextWrapping="Wrap" Text="数 学" VerticalAlignment="Top" Height="48" Width="96" FontWeight="Bold" FontFamily="STZhongsong" FontSize="38" Margin="0,102,0,0" TextAlignment="Center" Foreground="{Binding Foreground, ElementName=MorWeekday}"/>
         <TextBlock x:Name="MorB" HorizontalAlignment="Left" TextWrapping="Wrap" Text="英 语" VerticalAlignment="Top" Height="48" Width="96" FontWeight="Bold" FontFamily="STZhongsong" FontSize="38" Margin="0,155,0,0" TextAlignment="Center" Foreground="{Binding Foreground, ElementName=MorWeekday}"/>
