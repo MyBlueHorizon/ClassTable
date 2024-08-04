@@ -1,5 +1,5 @@
-﻿Imports System.Net
-Imports System.IO
+﻿Imports System.IO
+Imports System.Net
 Public Class UpdatePage
     ReadOnly MyWebClient As New Net.WebClient()
     ReadOnly UpdateFilePath = System.Environment.GetEnvironmentVariable("TEMP") + "\ClassTableInstall.msi"

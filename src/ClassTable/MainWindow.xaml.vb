@@ -117,6 +117,9 @@ Public Class MainWindow
     Private Sub ShowAbout_Click(ByVal sender As Object, ByVal e As RoutedEventArgs)
         RaiseEvent ShowAboutWindow(Me, New EventArgs)
     End Sub
+    Private Sub ShowSupport_Click(ByVal sender As Object, ByVal e As RoutedEventArgs)
+        System.Diagnostics.Process.Start("https://mybluehorizon.github.io")
+    End Sub
     Private Sub WindowTopmost_Checked(ByVal sender As Object, ByVal e As RoutedEventArgs)
         Topmost = True
     End Sub

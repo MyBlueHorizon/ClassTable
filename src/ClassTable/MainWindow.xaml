@@ -24,6 +24,8 @@
                         <MenuItem Header="设置" Click="ShowSetting_Click"/>
                         <MenuItem Header="更新" Click="ShowUpdate_Click"/>
                         <MenuItem Header="关于" Click="ShowAbout_Click"/>
+                        <Separator/>
+                        <MenuItem Header="访问支持页面" Click="ShowSupport_Click"/>
                     </MenuItem>
                     <MenuItem Header="编辑" Click="EditTableFile_Click"/>
                     <MenuItem Header="关闭" Click="AppExit_Click"/>
