@@ -1,18 +1,8 @@
-﻿Imports System.ComponentModel
-Imports System.Net
-Imports ClassTable.AppCore
-Public Class LegacyUpdateWindow
+﻿Imports System.Net
+Public Class UpdatePage
     ReadOnly MyWebClient As New Net.WebClient()
     ReadOnly UpdateFilePath = System.Environment.GetEnvironmentVariable("TEMP") + "\ClassTableInstall.msi"
     Public WithEvents DownloadEvents As WebClient = MyWebClient
-    ReadOnly BackgroundRedValue = My.Settings.BackgroundColor_Red
-    ReadOnly BackgroundBlueValue = My.Settings.BackgroundColor_Blue
-    ReadOnly BackgroundGreenValue = My.Settings.BackgroundColor_Green
-    ReadOnly BackgroundAlphaValue = My.Settings.BackgroundColor_Alpha
-    ReadOnly ForegroundRedValue = My.Settings.ForegroundColor_Red
-    ReadOnly ForegroundBlueValue = My.Settings.ForegroundColor_Blue
-    ReadOnly ForegroundGreenValue = My.Settings.ForegroundColor_Green
-    ReadOnly ForegroundAlphaValue = My.Settings.ForegroundColor_Alpha
     Public Shared ReadOnly LocalVersion As New Version(Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString())
     Public Shared LatestVersion As Version
     Public Shared ReleaseInformation As String
@@ -26,8 +16,6 @@ Public Class LegacyUpdateWindow
         Windows.Application.Current.Shutdown()
     End Sub
     Private Sub UpdateWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        Background = GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
-        TextBlock_Name.Foreground = GetWindowBrush(ForegroundRedValue, ForegroundGreenValue, ForegroundBlueValue, ForegroundAlphaValue)
         Label_LocalVersion.Content = LocalVersion
         If ReleaseInformation = Nothing Then
             LatestVersion = New Version("0.0.0.0")
@@ -57,13 +45,6 @@ Public Class LegacyUpdateWindow
         End If
     End Sub
     Private Sub Button_Back_Click(sender As Object, e As RoutedEventArgs) Handles Button_Back.Click
-        Hide()
-    End Sub
-    Private Sub LegacyUpdatWindow_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles Me.MouseLeftButtonDown
-        DragMove()
-    End Sub
-    Private Sub LegacyUpdateWindow_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        Hide()
-        e.Cancel = True
+        MainWindow.MyFunctionWindow.HideFunctionWindow()
     End Sub
 End Class

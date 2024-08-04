@@ -1,6 +1,5 @@
-﻿Imports System.ComponentModel
-Imports ClassTable.AppCore
-Public Class LegacySettingWindow
+﻿Imports ClassTable.AppCore
+Public Class SettingPage
     Dim BackgroundRedValue = My.Settings.BackgroundColor_Red
     Dim BackgroundBlueValue = My.Settings.BackgroundColor_Blue
     Dim BackgroundGreenValue = My.Settings.BackgroundColor_Green
@@ -9,11 +8,11 @@ Public Class LegacySettingWindow
     Dim ForegroundBlueValue = My.Settings.ForegroundColor_Blue
     Dim ForegroundGreenValue = My.Settings.ForegroundColor_Green
     Dim ForegroundAlphaValue = My.Settings.ForegroundColor_Alpha
-    Dim SetDate = LegacySidebarWindow.NowWeekday
+    Dim SetDate = MainWindow.NowWeekday
     Private Sub Slider_AlphaBar_ValueChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Double)) Handles Slider_AlphaBar.ValueChanged
         If Radio_Back.IsChecked = True Then
             BackgroundAlphaValue = Slider_AlphaBar.Value
-            Background = GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
+            MainWindow.MyFunctionWindow.Background = GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
         Else
             ForegroundAlphaValue = Slider_AlphaBar.Value
             TextBlock_Weekday.Foreground = GetWindowBrush(ForegroundRedValue, ForegroundGreenValue, ForegroundBlueValue, ForegroundAlphaValue)
@@ -22,7 +21,7 @@ Public Class LegacySettingWindow
     Private Sub Slider_RedBar_ValueChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Double)) Handles Slider_RedBar.ValueChanged
         If Radio_Back.IsChecked = True Then
             BackgroundRedValue = Slider_RedBar.Value
-            Background = GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
+            MainWindow.MyFunctionWindow.Background = GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
         Else
             ForegroundRedValue = Slider_RedBar.Value
             TextBlock_Weekday.Foreground = GetWindowBrush(ForegroundRedValue, ForegroundGreenValue, ForegroundBlueValue, ForegroundAlphaValue)
@@ -31,7 +30,7 @@ Public Class LegacySettingWindow
     Private Sub Slider_GreenBar_ValueChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Double)) Handles Slider_GreenBar.ValueChanged
         If Radio_Back.IsChecked = True Then
             BackgroundGreenValue = Slider_GreenBar.Value
-            Background = GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
+            MainWindow.MyFunctionWindow.Background = GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
         Else
             ForegroundGreenValue = Slider_GreenBar.Value
             TextBlock_Weekday.Foreground = GetWindowBrush(ForegroundRedValue, ForegroundGreenValue, ForegroundBlueValue, ForegroundAlphaValue)
@@ -40,7 +39,7 @@ Public Class LegacySettingWindow
     Private Sub Slider_BlueBar_ValueChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Double)) Handles Slider_BlueBar.ValueChanged
         If Radio_Back.IsChecked = True Then
             BackgroundBlueValue = Slider_BlueBar.Value
-            Background = GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
+            MainWindow.MyFunctionWindow.Background = GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
         Else
             ForegroundBlueValue = Slider_BlueBar.Value
             TextBlock_Weekday.Foreground = GetWindowBrush(ForegroundRedValue, ForegroundGreenValue, ForegroundBlueValue, ForegroundAlphaValue)
@@ -54,12 +53,12 @@ Public Class LegacySettingWindow
         Slider_RedBar.Value = BackgroundRedValue
         Slider_GreenBar.Value = BackgroundGreenValue
         Slider_BlueBar.Value = BackgroundBlueValue
-        Background = GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
+        MainWindow.MyFunctionWindow.Background = GetWindowBrush(BackgroundRedValue, BackgroundGreenValue, BackgroundBlueValue, BackgroundAlphaValue)
         TextBlock_Weekday.Foreground = GetWindowBrush(ForegroundRedValue, ForegroundGreenValue, ForegroundBlueValue, ForegroundAlphaValue)
         TextBlock_Weekday.Text = GetChineseWeekLiteName(SetDate)
     End Sub
     Private Sub Button_Back_Click(sender As Object, e As RoutedEventArgs) Handles Button_Back.Click
-        Hide()
+        MainWindow.MyFunctionWindow.HideFunctionWindow()
     End Sub
     Private Sub ChangeData_Click(sender As Object, e As RoutedEventArgs) Handles ChangeData.Click
         If SetDate = 7 Then
@@ -94,12 +93,5 @@ Public Class LegacySettingWindow
         Slider_RedBar.Value = ForegroundRedValue
         Slider_GreenBar.Value = ForegroundGreenValue
         Slider_BlueBar.Value = ForegroundBlueValue
-    End Sub
-    Private Sub SettingWindow_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        Hide()
-        e.Cancel = True
-    End Sub
-    Private Sub LegacySettingWindow_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles Me.MouseLeftButtonDown
-        DragMove()
     End Sub
 End Class

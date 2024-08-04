@@ -1,7 +1,6 @@
 ﻿Public Class AppCore
 
     '字符串转换
-
     '日期单字转换
     Public Shared Function GetChineseWeekLiteName(ByVal NowWeekday)
         Dim ChineseWeekName = "期"
@@ -54,7 +53,6 @@
     End Function
 
     '程序UI
-
     '获取窗口笔刷
     Public Shared Function GetWindowBrush(ByVal R As String, ByVal G As String, ByVal B As String, ByVal A As String)
         Dim WindowBrush As Brush = New SolidColorBrush(Color.FromArgb(A, R, G, B))
