@@ -1,5 +1,4 @@
-﻿Imports System.ComponentModel
-Imports ClassTable.AppCore
+﻿Imports ClassTable.AppCore
 Public Class SettingPage
     Dim BackgroundRedValue = My.Settings.BackgroundColor_Red
     Dim BackgroundBlueValue = My.Settings.BackgroundColor_Blue

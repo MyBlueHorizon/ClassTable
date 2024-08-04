@@ -19,7 +19,7 @@
         <TextBlock x:Name="TextBlock_SupportUrl" HorizontalAlignment="Left" TextWrapping="Wrap" Text="mybluehorizon.github.io" VerticalAlignment="Top" Margin="82,63,0,0" FontSize="14" FontFamily="STZhongsong" Foreground="White" Width="228"/>
         <TextBlock x:Name="TextBlock_ThirdPartyLibKey" HorizontalAlignment="Left" TextWrapping="Wrap" Text="第三方库：" VerticalAlignment="Top" Margin="10,87,0,0" FontSize="14" FontFamily="STZhongsong" Foreground="White" Width="72"/>
         <TextBlock x:Name="TextBlock_ThirdPartyLib" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ClosedXML 与 Newtonsoft.Json" VerticalAlignment="Top" Margin="82,87,0,0" FontSize="14" FontFamily="STZhongsong" Foreground="White" Width="228"/>
-        <TextBlock x:Name="TextBlock_Copyright" HorizontalAlignment="Left" TextWrapping="Wrap" Text="© ATHS Studio 2016 - 2022" VerticalAlignment="Top" Margin="10,151,0,0" FontSize="14" FontFamily="STZhongsong" Foreground="White" Width="199"/>
+        <TextBlock x:Name="TextBlock_Copyright" HorizontalAlignment="Left" TextWrapping="Wrap" Text="© ATHS Studio 2016 - 2024" VerticalAlignment="Top" Margin="10,151,0,0" FontSize="14" FontFamily="STZhongsong" Foreground="White" Width="199"/>
         <TextBlock x:Name="TextBlock_License" HorizontalAlignment="Left" TextWrapping="Wrap" Text="本程序基于 MIT 许可发布" VerticalAlignment="Top" Margin="10,124,0,0" FontSize="14" FontFamily="STZhongsong" Foreground="White" Width="199"/>
         <Button x:Name="Button_Back" Content="返  回" HorizontalAlignment="Left" Width="96" FontFamily="STZhongsong" FontSize="28" Height="48" VerticalAlignment="Top" Background="#3DFFFFFF" BorderBrush="{x:Null}" Foreground="{Binding Foreground, ElementName=TextBlock_Name}"  FontWeight="Bold" Margin="214,122,0,0"/>
     </Grid>
